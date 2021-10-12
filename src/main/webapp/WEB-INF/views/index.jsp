@@ -22,10 +22,6 @@
  		color: black; 
  		text-decoration: none; 		
  	}
-	.card{
-		border: 0;
-		outline: 0;
-	}
 </style>
 </head>
 <body>
@@ -63,12 +59,12 @@
 				<div class="col s12 m4 center-align">
 					<div class="card">
 						<div class="card-image waves-effect waves-block waves-light">
-							<a href="/join">
+							<a href="/busan/popular">
 								<img class="activator" src="images/boogi1.jpg">
 							</a>
 						</div>
 						<div class="card-content">
-							<a href="/join">
+							<a href="/busan/popular">
 								<span id="text">인기 관광지</span>
 							</a>							
 						</div>
@@ -97,7 +93,7 @@
 						</div>
 						<div class="card-content">
 							<a href="/join">
-								<span id="text">여행 블로그</span>
+								<span id="text">여행 이야기</span>
 							</a>							
 						</div>
 					</div>
@@ -105,12 +101,12 @@
 				<div class="col s12 m4">
 					<div class="card">
 						<div class="card-image waves-effect waves-block waves-light">
-							<a href="/join">
+							<a href="/busan/restaurant">
 								<img class="activator" src="images/boogi4.jpg">
 							</a>
 						</div>
 						<div class="card-content">
-							<a href="/join">
+							<a href="/busan/restaurant">
 								<span id="text">인기 맛집</span>
 							</a>							
 						</div>
@@ -119,12 +115,12 @@
 				<div class="col s12 m4">
 					<div class="card">
 						<div class="card-image waves-effect waves-block waves-light">
-							<a href="/join">
+							<a href="/etc/info">
 								<img class="activator" src="images/boogi5.jpg">
 							</a>
 						</div>
 						<div class="card-content">
-							<a href="/login">
+							<a href="/etc/info">
 								<span id="text">With Corona</span>
 							</a>							
 						</div>

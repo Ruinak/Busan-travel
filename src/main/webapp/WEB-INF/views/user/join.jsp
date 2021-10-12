@@ -6,18 +6,31 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	.container {
+		width: 30%;
+		margin: auto;
+	}
+	#btn{
+		font-size: 24px;
+	}
+	#title {
+		text-align: center;
+	}
+</style>
 </head>
 <body>
 	<form class="join_action" action="/join" method="post" id="myForm">
+	<br>
 		<div class="container">
-			<h1>회원 가입</h1>
-			<br> <br>
+			<h1 id="title">회원 가입</h1>
+			<br>
 			<div class="form-group">
 				<label for="username">아이디:</label> <input type="text"
 					name="username" class="form-control" placeholder="아이디를 입력하세요"
 					required="required" maxlength="20" id="username">
 					<div>
-					<button type="button" class="btn btn-primary float-right" id="btncheckId">아이디 중복 확인</button>
+					<button type="button" class="btn btn-dark float-right" id="btncheckId">아이디 중복 확인</button>
 					<br>
 					</div>
 			</div>
@@ -31,7 +44,7 @@
 					class="form-control" name="email" placeholder="이메일을 입력하세요"
 					required="required" maxlength="50" id="email">
 					<div>
-					<button type="button" class="btn btn-primary float-right" id="btncheckEmail">이메일 중복 확인</button>
+					<button type="button" class="btn btn-dark float-right" id="btncheckEmail">이메일 중복 확인</button>
 					<br>
 					</div>
 			</div>
@@ -133,8 +146,8 @@
 				</div>
 			</div>
 			<br>
-			<button type="submit" onclick="register(event);" class="btn btn-primary">회원가입</button>
-			<button type="button" class="btn btn-primary"
+			<button type="submit" onclick="register(event);" class="btn btn-dark btn-block">회원가입</button>
+			<button type="button" class="btn btn-dark btn-block"
 				onclick="location.href='/'">뒤로가기</button>
 		</div>
 	</form>
