@@ -46,14 +46,12 @@ public class UserController {
 				System.out.println("====================");
 				System.out.println(error.getDefaultMessage());
 			}
-			throw new CustomValidationException("실패!", errorMap);
-			
-		} else {
-			
+			throw new CustomValidationException("실패!", errorMap);			
+		} else {			
 			User user = dto.toEntity();
 			User userEntity = userService.join(user);
 			System.out.println(userEntity);
-			return "user/login";
+			return "redirect:/login";
 		}
 	}
 	
@@ -69,8 +67,20 @@ public class UserController {
 		}
 		return "success";
 	}
-	
-	
+		
+	// 이메일 중복 확인
+	@PostMapping("/emailCheck")
+	@ResponseBody
+	public String emailCheck(@RequestBody User user) {
+		
+		boolean result = userService.emailCheck(user);
+		
+		if( result == false ) {
+			return "Fail";
+		}
+		return "success";
+	}
+		
 	// 업데이트 폼 이동
 	@GetMapping("/user/{id}/update")
 	public String update(@PathVariable int id,

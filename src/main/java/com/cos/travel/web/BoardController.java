@@ -40,4 +40,10 @@ public class BoardController {
 		model.addAttribute("board", board);
 		return "board/noticedetail";
 	}
+	
+	// 게시판으로 이동
+	@GetMapping("/board")
+	public String board() {
+		return "board/main";
+	}
 }
