@@ -1,18 +1,18 @@
 package com.cos.travel.web;
 
-import org.json.JSONObject;
-import org.json.XML;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.io.BufferedReader;
-import java.io.IOException;
+import org.json.JSONObject;
+import org.json.XML;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class InfoController {
@@ -23,8 +23,7 @@ public class InfoController {
 	@GetMapping("/etc/coronainfo")
 	@ResponseBody
 	public String coronaInfo() throws IOException {
-		
-		
+				
 		Calendar cal = Calendar.getInstance();
 		String format ="yyyyMMdd";
 		SimpleDateFormat sdf = new SimpleDateFormat(format);
@@ -34,7 +33,7 @@ public class InfoController {
 		Calendar cal2 = Calendar.getInstance();
 		String format2 ="yyyyMMdd";
 		SimpleDateFormat sdf2 = new SimpleDateFormat(format2);
-		String today = sdf2.format(cal2.getTime());		
+		String today = sdf2.format(cal2.getTime());
 		
         StringBuilder urlBuilder = new StringBuilder("http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson"); /*URL*/
         urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=C7TQWZckjR7aJC72Xpst19alIqj9wPXlz2cIacI40%2Fiq64nRSS%2FX%2BlH51HE8XkqctubTUdxGeZd6XltoW84DEA%3D%3D"); /*Service Key*/
@@ -104,12 +103,13 @@ public class InfoController {
         JSONObject xmlJSONObj = XML.toJSONObject(result);
         String jsonPrettyPrintString = xmlJSONObj.toString(PRETTY_PRINT_INDENT_FACTOR);
         
-        return jsonPrettyPrintString;
+		return jsonPrettyPrintString;
 	}
 	
 	@GetMapping("/etc/weatherinfo")
 	@ResponseBody
-	public String weatherInfo() throws IOException {		
+	public String weatherInfo() throws IOException {
+		
 		Calendar cal = Calendar.getInstance();
 		String format ="yyyyMMdd";
 		SimpleDateFormat sdf = new SimpleDateFormat(format);
@@ -148,9 +148,11 @@ public class InfoController {
 		return jsonPrettyPrintString;
 	}
 	
-	// 코로나 화면
+	//코로나 화면
 	@GetMapping("/etc/info")
 	public String corona() {
 		return "etc/info";
 	}
+	
+	//요일 구하기 21.10.12
 }
