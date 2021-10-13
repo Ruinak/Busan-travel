@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.cos.travel.model.Spot;
+import com.cos.travel.model.Tagspot;
 import com.cos.travel.service.SpotService;
+import com.cos.travel.service.TagspotService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -18,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 public class SpotController {
 
 	private final SpotService spotService;
+	private final TagspotService tagspotService;
 	
 	// 인기 관광지로 이동하기
 	@GetMapping("/busan/popular")
@@ -29,11 +32,11 @@ public class SpotController {
 	
 	// 관광지 상세보기
 	@GetMapping("/busan/{id}")
-	public String findById(@PathVariable int id, Model model) {
+	public String findById(@PathVariable int id, Model model1, Model model2) {
 		Spot spot = spotService.detail(id);
-		//spot.setCount(spot.getCount()+1);
-		//spotService.update(id, spot);
-		model.addAttribute("spot", spot);
+		Tagspot tagspot = tagspotService.detail(id);
+		model1.addAttribute("spot", spot);
+		model2.addAttribute("tagspot", tagspot);
 		return "busan/popularDetail";
 	}
 }

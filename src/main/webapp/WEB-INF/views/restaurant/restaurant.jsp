@@ -28,11 +28,14 @@
 		width: 417px;
 		height: 320px;
 	}
+	hr {
+		border : solid 1px;
+	}
 </style>
 </head>
 <body>
 	<div class="container">
-		<h3 style="text-align: center">인기 맛집</h3>
+		<h3 style="text-align: center">인기 맛집</h3><hr>
 		<!-- Image Card -->
 		<div class="row center-align">
 			<c:forEach var="restaurant" items="${restaurants.content}">

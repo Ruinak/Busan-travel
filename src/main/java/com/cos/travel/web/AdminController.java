@@ -10,12 +10,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.cos.travel.model.User;
 import com.cos.travel.service.BoardService;
 import com.cos.travel.service.UserService;
 import com.cos.travel.web.dto.search.SearchDto;
+
 import lombok.RequiredArgsConstructor;
 
 @Controller

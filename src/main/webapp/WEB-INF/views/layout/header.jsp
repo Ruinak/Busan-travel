@@ -60,14 +60,16 @@
 					<sec:authorize access="isAuthenticated()">
 						<ul class="navbar-nav">
 							<li class="nav-item">
+							<a class="nav-link" href="/" id="home" >Respect Your Busan</a></li>
+							<li class="nav-item">
 								<a class="nav-link" href="/user/${principal.user.id}/update" 
 										id="update">회원 정보 수정</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#" id="popular1">인기 관광지</a>
+								<a class="nav-link" href="/busan/popular" id="popular1">인기 관광지</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#" id="popukar2">인기 맛집</a>
+								<a class="nav-link" href="/restaurant/restaurant" id="popukar2">인기 맛집</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="/etc/info" id="corona" >With Corona</a>

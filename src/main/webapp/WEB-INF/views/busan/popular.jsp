@@ -28,11 +28,14 @@
 		width: 417px;
 		height: 320px;
 	}
+	hr {
+		border : solid 1px;
+	}
 </style>
 </head>
 <body>
 	<div class="container">
-		<h3 style="text-align: center">인기 관광지</h3>
+		<h3 style="text-align: center">인기 관광지</h3><hr>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">				
 				<div class="collapse navbar-collapse" id="navbarNav">

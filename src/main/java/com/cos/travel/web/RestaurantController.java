@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.cos.travel.model.Restaurant;
+import com.cos.travel.model.Tagrestaurant;
 import com.cos.travel.service.RestaurantService;
+import com.cos.travel.service.TagrestaurantService;
+
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -17,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 public class RestaurantController {
 
 	private final RestaurantService restaurantService;
+	private final TagrestaurantService tagrestaurantService;
 	
 	// 인기 맛집으로 이동하기
 	@GetMapping("/restaurant/restaurant")
@@ -28,9 +32,11 @@ public class RestaurantController {
 	
 	// 맛집 상세보기
 	@GetMapping("/restaurant/{id}")
-	public String findById(@PathVariable int id, Model model) {
+	public String findById(@PathVariable int id, Model model1, Model model2) {
 		Restaurant restaurant = restaurantService.detail(id);
-		model.addAttribute("restaurant", restaurant);
+		Tagrestaurant tagrestaurant = tagrestaurantService.detail(id);
+		model1.addAttribute("restaurant", restaurant);
+		model2.addAttribute("tagrestaurant", tagrestaurant);
 		return "restaurant/restaurantDetail";
 	}
 }
