@@ -2,14 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <div class="container">
-	<h1>회원 관리</h1> <br>
+	<h1>회원 관리</h1><br>
 	<div>
 		<div style="margin: 1rem" class="float-right">
 			<form class="form-inline" action="" id="saerchForm">
 				<div class="form-group">
 					<label for="sel1"></label> <select class="form-control" id="sel1">
 						<option>검색</option>
-						<option>모두</option>
+						<option>전체</option>
 						<option>아이디</option>
 						<option>이메일</option>
 					</select>
@@ -19,7 +19,7 @@
 			</form>
 		</div>
 		<div class="clearfix"></div>
-		<c:forEach var="user" items="${lists.content}">			
+		<c:forEach var="user" items="${lists.content}">
 			<div class="card m-3">
 				<div class="card-body">
 					<p>
@@ -31,12 +31,13 @@
 						<c:when test="${user.id eq 1 }">
 						</c:when>
 						<c:otherwise>
-						<button type="button" name="btnDelete" class="btn btn-danger">회원 삭제</button>
+						<button type="button" name="btnDelete" class="btn btn-danger">회원
+						삭제</button>
 						</c:otherwise>
 					</c:choose>
 				</div>
-			</div>			
-		</c:forEach>	
+			</div>
+		</c:forEach>
 		<ul class="pagination justify-content-center">
 			<c:choose>
 				<c:when test="${lists.first}">

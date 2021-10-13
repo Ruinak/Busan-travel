@@ -52,13 +52,13 @@
 	#btn1{ 
 		margin: 20px;
 	}	
-	#btn2{
+	#btnComment{
 		width : 200px;
 		height : 60px;
-		font-size: 24px;
+		font-size: 24px;3
 		background-color: highlight;
 	}
-	#btn3{
+	#btn2{
 		width : 200px;
 		height : 60px;
 		font-size: 24px;
@@ -117,8 +117,7 @@
 			</ul>
 		</div>
 		<hr>		
-	</div>
-	<br> <br>
+	</div> <br> <br>
 	<div>
 		<table class="table">
 			<tr>
@@ -126,25 +125,26 @@
 				<td>댓글 내용</td>
 				<td>작성 일자</td>
 			</tr>
-			<c:forEach items="${ board.comments }" var="comment">
+			<c:forEach items="${ clist }" var="clist">
 				<tr>
-					<td>${ comment.cnum }</td>
-					<td>${ comment.content }</td>
-					<td><fmt:formatDate value="${ comment.regdate }" pattern="yyyy-MM-dd" /></td>
+					<td>${ clist.cid }</td>
+					<td>${ clist.content }</td>
+					<td><fmt:formatDate value="${ clist.regdate }" pattern="yyyy-MM-dd" /></td>
 				</tr>
 			</c:forEach>
 		</table><hr>
+		<div id="replyResult"></div>	
 		<c:if test="${ not empty principal.user }"><br/>
 			<div>
 				<textarea rows="3" cols="110" id="msg"></textarea>
 				<div class="float-right">
-					<button id="btn2" type="button" class="btn btn-primary" id="btnComment">댓글쓰기</button>
+					<button type="button" class="btn btn-primary" id="btnComment">댓글쓰기</button>
 				</div>
 			</div>
 		</c:if>
 	</div>
 	<div class="float-letf">
-		<button id="btn3" type="button" class="btn btn-primary" onclick="history.back()">이전</button> <br><br><br>
+		<button id="btn2" type="button" class="btn btn-primary" onclick="history.back()">이전</button> <br><br><br>
 	</div>
 </div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1253c1261bc7379cfd6cf07b68488458"></script>
@@ -213,24 +213,23 @@
 	var init = function() {
 		$.ajax({
 			type : "GET",
-			url : "/reply/list/" + $("#num").val(),
-			data : {
-				"bnum" : $("#num").val()
-			}
+			url : "/comment/list/" + ${spot.id},
 		})
 		.done(function(resp) {
 			var str = "";
 			$.each(resp, function(key, val) {
-				str += val.user.id + "  "
+				str += val.writer + "  "
 				str += val.content + "  "
 				str += val.regdate + "<br>"
+// 				str += "<a href='javascript:fdel("+val.cnum+")'>삭제</a><br>"
 			})
 			$("#replyResult").html(str);
 		})
-		.fail(function(e) {
-			alert("Error : " + e);
+		.fail(function() {
+			alert("댓글 불러오기 실패");
 		})
 	}
+	init();
 </script>
 </body>
 </html>

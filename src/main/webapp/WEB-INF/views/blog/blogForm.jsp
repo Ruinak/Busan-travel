@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="container">
-		<h1>블로그 글 작성</h1><br>
+		<h1>여행이야기 쓰기</h1><br>
 		<form>
 			<div class="form-group">
 				<input type="text"
