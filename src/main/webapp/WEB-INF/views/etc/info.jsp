@@ -187,40 +187,36 @@
 	</script>
 	<script>
 		var now = new Date();
+		var week = new Array('일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일');
 		function oneDay() {
-			var week = new Array('일요일', '월요일', '화요일', '수요일', '목요일', '금요일',
-					'토요일');
-			var today = new Date().getDay();
-			var todayLabel = week[today];
+			var today = new Date();
+			var todayLabel = week[today.getDay()];
 			return todayLabel;
 		}
-		function twoDays() { // 0 1 2 3 4 5 6
-			var week = new Array('일요일', '월요일', '화요일', '수요일', '목요일', '금요일',
-					'토요일');
-			var today = new Date().getDay() + 1;
-			var todayLabel = week[today];
-			return todayLabel;
+		function twoDays() { 
+			var today = new Date();
+			var tomorrow1 = new Date(today.valueOf() + (24*60*60*1000*1));
+			console.log(today.valueOf());
+			var tomorrow1Label = week[tomorrow1.getDay()];
+			return tomorrow1Label;
 		}
 		function threeDays() {
-			var week = new Array('일요일', '월요일', '화요일', '수요일', '목요일', '금요일',
-					'토요일');
-			var today = new Date().getDay() + 2;
-			var todayLabel = week[today];
-			return todayLabel;
+			var today = new Date();
+			var tomorrow2 = new Date(today.valueOf() + (24*60*60*1000*2));
+			var tomorrow2Label = week[tomorrow2.getDay()];
+			return tomorrow2Label;
 		}
 		function fourDays() {
-			var week = new Array('일요일', '월요일', '화요일', '수요일', '목요일', '금요일',
-					'토요일');
-			var today = new Date().getDay() + 3;
-			var todayLabel = week[today];
-			return todayLabel;
+			var today = new Date();
+			var tomorrow3 = new Date(today.valueOf() + (24*60*60*1000*3));
+			var tomorrow3Label = week[tomorrow3.getDay()];
+			return tomorrow3Label;
 		}
 		function fiveDays() {
-			var week = new Array('일요일', '월요일', '화요일', '수요일', '목요일', '금요일',
-					'토요일');
-			var today = new Date().getDay() + 4;
-			var todayLabel = week[today];
-			return todayLabel;
+			var today = new Date();
+			var tomorrow4 = new Date(today.valueOf() + (24*60*60*1000*4));
+			var tomorrow4Label = week[tomorrow4.getDay()];
+			return tomorrow4Label;
 		}
 		document.getElementById('placeholder').innerText = oneDay();
 		document.getElementById('placeholder2').innerText = twoDays();

@@ -14,9 +14,18 @@ public class RestaurantService {
 
 	private final RestaurantRepository restaurantRepository;
 	
-	// 전체 관광지 목록 보기
+	// 전체 맛집 목록 보기
 	@Transactional(readOnly = true)
 	public Page<Restaurant> list(Pageable pageable){
 		return restaurantRepository.findAll(pageable);
+	}
+	
+	// 맛집 상세보기
+	@Transactional(readOnly = true)
+	public Restaurant detail(int id) {
+		return restaurantRepository.findById(id)
+				.orElseThrow(()->{
+					return new IllegalArgumentException("상세보기 실패");
+				});
 	}
 }

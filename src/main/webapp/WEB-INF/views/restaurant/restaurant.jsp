@@ -39,10 +39,14 @@
 				<div class="col-md-4">
 					<div class="card">
 						<div class="card-image waves-effect waves-block waves-light">
-							<img class="activator" src="${restaurant.thumurl }">
+							<a href="/restaurant/${restaurant.id}">
+								<img class="activator" src="${restaurant.thumurl }">
+							</a>
 						</div>
 						<div class="card-content">
-							<span id="text">${restaurant.restaurant }</span>
+							<a href="/restaurant/${restaurant.id}">
+								<span id="text">${restaurant.restaurant }</span>
+							</a>
 						</div>
 					</div>
 				</div>

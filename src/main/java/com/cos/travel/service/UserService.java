@@ -1,14 +1,10 @@
 package com.cos.travel.service;
 
-import java.util.List;
-import org.springframework.beans.support.PagedListHolder;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import com.cos.travel.model.User;
 import com.cos.travel.repository.UserRepository;
 import com.cos.travel.web.dto.search.SearchDto;
@@ -103,9 +99,9 @@ public class UserService {
 		
 		Page<User> userlist = null;
 		
-		System.out.println("pageable.getOffset()="+pageable.getOffset());
-		System.out.println("pageable.getPageSize()="+pageable.getPageSize());
-		System.out.println("pageable.getPageNumber()="+pageable.getPageNumber());
+		System.out.println("pageable.getOffset()=" + pageable.getOffset());
+		System.out.println("pageable.getPageSize()=" + pageable.getPageSize());
+		System.out.println("pageable.getPageNumber()=" + pageable.getPageNumber());
 		
 		switch (dto.getGubun()) {
 			case "모두":

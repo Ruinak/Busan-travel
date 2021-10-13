@@ -19,7 +19,7 @@ public class SpotController {
 
 	private final SpotService spotService;
 	
-	// by 지수. 인기관광지로 이동하기
+	// 인기 관광지로 이동하기
 	@GetMapping("/busan/popular")
 	public String popular(Model model,
 			@PageableDefault(size = 9, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
@@ -27,7 +27,7 @@ public class SpotController {
 		return "busan/popular";
 	}
 	
-	// 공지사항 상세보기
+	// 관광지 상세보기
 	@GetMapping("/busan/{id}")
 	public String findById(@PathVariable int id, Model model) {
 		Spot spot = spotService.detail(id);

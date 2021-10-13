@@ -101,12 +101,12 @@
 				<div class="col s12 m4">
 					<div class="card">
 						<div class="card-image waves-effect waves-block waves-light">
-							<a href="/busan/restaurant">
+							<a href="/restaurant/restaurant">
 								<img class="activator" src="images/boogi4.jpg">
 							</a>
 						</div>
 						<div class="card-content">
-							<a href="/busan/restaurant">
+							<a href="/restaurant/restaurant">
 								<span id="text">인기 맛집</span>
 							</a>							
 						</div>

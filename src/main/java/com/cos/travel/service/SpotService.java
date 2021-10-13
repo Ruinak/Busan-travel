@@ -20,12 +20,12 @@ public class SpotService {
 		return spotRepository.findAll(pageable);
 	}
 	
-	// 공지사항 상세보기
-		@Transactional(readOnly = true)
-		public Spot detail(int id) {
-			return spotRepository.findById(id)
-					.orElseThrow(()->{
-						return new IllegalArgumentException("상세보기 실패");
-					});
-		}
+	// 관광지 상세보기
+	@Transactional(readOnly = true)
+	public Spot detail(int id) {
+		return spotRepository.findById(id)
+				.orElseThrow(()->{
+					return new IllegalArgumentException("상세보기 실패");
+				});
+	}
 }

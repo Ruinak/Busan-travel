@@ -59,4 +59,7 @@ public class Spot {
 	@Column
 	private int recommend;
 	
+//	@OneToMany(mappedBy = "spot", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	@JsonIgnoreProperties("spot")	// board와 Comment간 무한 참조가 일어나므로 이걸 선언하면 Comment 클래스의 ManyToOne을 
+//	private List<Comment> comments;										// null값으로 보므로 무한 참조를 막을 수 있음
 }
