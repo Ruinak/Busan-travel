@@ -42,12 +42,17 @@ public class SpotController {
 		return "busan/popularDetail";
 	}
 	
-	// 맞춤 관광지
+	// 맞춤 여행지
 	@GetMapping("/busan/recommand")
-	public void recommand(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+	public String recommand(Model model,
+					@AuthenticationPrincipal PrincipalDetails principalDetails,
+					@PageableDefault(size = 9, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
+		
 		// db에서 여행테마 받아서 쿼리문 형태로 전환 "여행,힐링 -> 여행|힐링"
 		String userPreference = principalDetails.getUser().getPreference().replaceAll(",", "|");
+		
 		// 쿼리결과를 spots에 담아서 jsp파일에 뿌림
-		model.addAttribute("spots", spotService.recommand(userPreference));
+		model.addAttribute("spots", spotService.recommand(userPreference, pageable));
+		return "busan/recommand";
 	}
 }

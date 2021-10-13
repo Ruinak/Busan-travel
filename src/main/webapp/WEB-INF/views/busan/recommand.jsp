@@ -7,13 +7,10 @@
 <meta charset="UTF-8">
 <title>인기 관광지</title>
 <!-- Bootstrap -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <!-- Materialize -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <style type="text/css">
 	#text {
 		font-size: 22px;
@@ -33,9 +30,8 @@
 <body>
 	<div class="container">
 		<h3 style="text-align: center">추천 관광지</h3>
-		<!-- Image Card -->
 		<div class="row center-align">
-			<c:forEach var="spot" items="${spots}">
+			<c:forEach var="spot" items="${spots.content}">
 				<div class="col-md-4">
 					<div class="card">
 						<div class="card-image waves-effect waves-block waves-light">
@@ -52,6 +48,41 @@
 				</div>
 			</c:forEach>
 		</div>
+		<!-- 페이징 코드 -->
+		<ul class="pagination justify-content-center">
+			<c:choose>
+				<c:when test="${spots.first}">
+					<li class="page-item disabled"><a class="page-link"
+						href="?page=${spots.number-1}">이전</a></li>
+				</c:when>
+				<c:otherwise>
+					<li class="page-item "><a class="page-link"
+						href="?page=${spots.number-1}">이전</a></li>
+				</c:otherwise>
+			</c:choose>
+			<c:forEach var="i" begin="1" end="${spots.totalPages}" step="1">
+				<c:choose>
+					<c:when test="${i eq spots.number+1}">
+						<li class="page-item active"><a class="page-link"
+							href="?page=${i-1}">${i}</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="page-item "><a class="page-link"
+							href="?page=${i-1}">${i}</a></li>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			<c:choose>
+				<c:when test="${spots.last}">
+					<li class="page-item disabled"><a class="page-link"
+						href="?page=${spots.number+1}">다음</a></li>
+				</c:when>
+				<c:otherwise>
+					<li class="page-item"><a class="page-link"
+						href="?page=${spots.number+1}">다음</a></li>
+				</c:otherwise>
+			</c:choose>
+		</ul>
 	</div>
 </body>
 </html>

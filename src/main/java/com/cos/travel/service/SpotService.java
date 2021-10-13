@@ -1,13 +1,13 @@
 package com.cos.travel.service;
 
-import java.util.List;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.cos.travel.model.Spot;
 import com.cos.travel.repository.SpotRepository;
+
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -31,9 +31,9 @@ public class SpotService {
 				});
 	}
 	
-	// 맞춤 관광지 조회
+	// 맞춤 관광지 추천
 	@Transactional(readOnly = true)
-	public List<Spot> recommand(String userPreference){
-		return spotRepository.recommand(userPreference);
+	public Page<Spot> recommand(String userPreference, Pageable pageable){
+		return spotRepository.recommandUser(userPreference, pageable);
 	}
 }
