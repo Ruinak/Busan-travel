@@ -1,10 +1,16 @@
 package com.cos.travel.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -59,7 +65,9 @@ public class Spot {
 	@Column
 	private int recommend;
 	
-//	@OneToMany(mappedBy = "spot", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//	@JsonIgnoreProperties("spot")	// board와 Comment간 무한 참조가 일어나므로 이걸 선언하면 Comment 클래스의 ManyToOne을 
-//	private List<Comment> comments;										// null값으로 보므로 무한 참조를 막을 수 있음
+	// 태균 외래키 추가
+	@OneToMany(mappedBy = "spot", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("spot")
+	private List<Comment> comments;
+	
 }

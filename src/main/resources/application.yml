@@ -34,3 +34,5 @@ spring:
     serialization:
       fail-on-empty-beans: false
       
+file:
+  path: C:/devtools/workspace/Springboot/upload/ 

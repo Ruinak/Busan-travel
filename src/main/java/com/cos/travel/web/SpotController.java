@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
+import com.cos.travel.config.auth.PrincipalDetails;
 import com.cos.travel.model.Spot;
 import com.cos.travel.model.Tagspot;
 import com.cos.travel.service.SpotService;
@@ -38,5 +40,14 @@ public class SpotController {
 		model1.addAttribute("spot", spot);
 		model2.addAttribute("tagspot", tagspot);
 		return "busan/popularDetail";
+	}
+	
+	// 맞춤 관광지
+	@GetMapping("/busan/recommand")
+	public void recommand(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+		// db에서 여행테마 받아서 쿼리문 형태로 전환 "여행,힐링 -> 여행|힐링"
+		String userPreference = principalDetails.getUser().getPreference().replaceAll(",", "|");
+		// 쿼리결과를 spots에 담아서 jsp파일에 뿌림
+		model.addAttribute("spots", spotService.recommand(userPreference));
 	}
 }

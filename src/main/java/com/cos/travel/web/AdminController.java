@@ -58,37 +58,10 @@ public class AdminController {
 		return "board/noticeupdateForm";
 	}
 	
-	/*
-	 * // 회원 아이디로 검색
-	 * 
-	 * @GetMapping("/admin/searchUsername/{username}") public String
-	 * findUsername(Model model, @PageableDefault(size = 3, sort = "id", direction =
-	 * Sort.Direction.DESC) Pageable pageable, @PathVariable String username) {
-	 * 
-	 * System.out.println(username);
-	 * 
-	 * Page<User> lists = userService.searchUsername(username, pageable);
-	 * model.addAttribute("lists", lists); return "admin/userlist"; }
-	 * 
-	 * // 회원 메일 검색
-	 * 
-	 * @GetMapping("/admin/searchEmail/{email}") public String findEmail(Model
-	 * model, @PageableDefault(size = 3, sort = "id", direction =
-	 * Sort.Direction.DESC) Pageable pageable, @PathVariable String email) {
-	 * 
-	 * System.out.println(email);
-	 * 
-	 * Page<User> lists = userService.searchEmail(email, pageable);
-	 * model.addAttribute("lists", lists); return "admin/userlist"; }
-	 */
-	
-	// 회원 모두 검색
+	// 모든 검색 컨트롤러
 	@GetMapping("/admin/findbytext")
-	public String findByText(Model model, @ModelAttribute SearchDto dto, @PageableDefault(size = 3, sort = "id",
-	direction = Sort.Direction.DESC) Pageable pageable) {
-		
-//		System.out.println("===========호출==============");
-//		System.out.println(dto.getText()+" "+dto.getGubun());
+	public String findByText(Model model, @ModelAttribute SearchDto dto, 
+			@PageableDefault(size = 3, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
 		Page<User> lists = userService.searchByText(dto, pageable);
 		model.addAttribute("lists", lists);
 		return "admin/userlist";

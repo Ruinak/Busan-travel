@@ -1,5 +1,7 @@
 package com.cos.travel.service;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -27,5 +29,11 @@ public class SpotService {
 				.orElseThrow(()->{
 					return new IllegalArgumentException("상세보기 실패");
 				});
+	}
+	
+	// 맞춤 관광지 조회
+	@Transactional(readOnly = true)
+	public List<Spot> recommand(String userPreference){
+		return spotRepository.recommand(userPreference);
 	}
 }

@@ -74,78 +74,62 @@
 				<label for="preference">나의 여행 취향 (여러개 선택 가능)</label> <br>
 				<div class="form-check-inline">
 					<label class="form-check-label"> <input type="checkbox"
-						class="form-check-input" name="preference" value="food">맛집
+						class="form-check-input" name="preference" value="산,바다">자연(산/바다)
 					</label>
 				</div>
 				<div class="form-check-inline">
 					<label class="form-check-label"> <input type="checkbox"
-						class="form-check-input" name="preference" value="healing">힐링
+						class="form-check-input" name="preference" value="전시체험">전시체험
 					</label>
 				</div>
 				<div class="form-check-inline">
 					<label class="form-check-label"> <input type="checkbox"
-						class="form-check-input" name="preference" value="view">풍경
+						class="form-check-input" name="preference" value="예술,건축물">예술/건축물
 					</label>
 				</div>
 				<div class="form-check-inline">
 					<label class="form-check-label"> <input type="checkbox"
-						class="form-check-input" name="preference" value="nature">자연(산,바다)
+						class="form-check-input" name="preference" value="운동,트레킹">운동/트레킹
 					</label>
 				</div>
 				<div class="form-check-inline">
 					<label class="form-check-label"> <input type="checkbox"
-						class="form-check-input" name="preference" value="exp">전시체험
+						class="form-check-input" name="preference" value="가족,반려동물">가족/반려동물
 					</label>
 				</div>
 				<div class="form-check-inline">
 					<label class="form-check-label"> <input type="checkbox"
-						class="form-check-input" name="preference" value="art">예술/건축물
+						class="form-check-input" name="preference" value="공원">공원
 					</label>
 				</div>
 				<div class="form-check-inline">
 					<label class="form-check-label"> <input type="checkbox"
-						class="form-check-input" name="preference" value="exercise">운동/트레킹
+						class="form-check-input" name="preference" value="야경">야경
 					</label>
 				</div>
 			</div>
 			<div>
 				<div class="form-check-inline">
 					<label class="form-check-label"> <input type="checkbox"
-						class="form-check-input" name="preference" value="family">가족/반려동물
+						class="form-check-input" name="preference" value="사진">사진
 					</label>
 				</div>
 				<div class="form-check-inline">
 					<label class="form-check-label"> <input type="checkbox"
-						class="form-check-input" name="preference" value="park">공원
+						class="form-check-input" name="preference" value="책">책
 					</label>
 				</div>
 				<div class="form-check-inline">
 					<label class="form-check-label"> <input type="checkbox"
-						class="form-check-input" name="preference" value="nightview">야경
+						class="form-check-input" name="preference" value="캠핑">캠핑
 					</label>
 				</div>
 				<div class="form-check-inline">
 					<label class="form-check-label"> <input type="checkbox"
-						class="form-check-input" name="preference" value="pic">사진
+						class="form-check-input" name="preference" value="역사,종교">역사/종교
 					</label>
-				</div>
-				<div class="form-check-inline">
-					<label class="form-check-label"> <input type="checkbox"
-						class="form-check-input" name="preference" value="book">책
-					</label>
-				</div>
-				<div class="form-check-inline">
-					<label class="form-check-label"> <input type="checkbox"
-						class="form-check-input" name="preference" value="camp">캠핑
-					</label>
-				</div>
-				<div class="form-check-inline">
-					<label class="form-check-label"> <input type="checkbox"
-						class="form-check-input" name="preference" value="religion">역사/종교
-					</label>
-				</div>
+				</div><br>
 			</div>
-			<br>
 			<button type="submit" onclick="register(event);" class="btn btn-dark btn-block">회원가입</button>
 			<button type="button" class="btn btn-dark btn-block"
 				onclick="location.href='/'">뒤로가기</button>

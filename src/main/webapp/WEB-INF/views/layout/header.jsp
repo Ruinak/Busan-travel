@@ -44,10 +44,10 @@
 								<a class="nav-link" href="/admin/userlist" id="userManager">회원 관리</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="/board/list" id="board">여행 이야기 관리</a>
+								<a class="nav-link" href="/blog/blogMain" id="board">여행 이야기 관리</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="/board/notice" id="notice">공지사항 관리</a>
+								<a class="nav-link" href="/board/boardMain" id="notice">공지사항 관리</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="/logout">로그아웃(<sec:authentication
@@ -69,13 +69,16 @@
 								<a class="nav-link" href="/busan/popular" id="popular1">인기 관광지</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="/restaurant/restaurant" id="popukar2">인기 맛집</a>
+								<a class="nav-link" href="/restaurant/restaurant" id="popular2">인기 맛집</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="/blog/blogMain" id="travel">여행이야기</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="/etc/info" id="corona" >With Corona</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="/board/notice" id="notice">공지사항</a>
+								<a class="nav-link" href="/board/boardMain" id="notice">공지사항</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="/logout">로그아웃(<sec:authentication

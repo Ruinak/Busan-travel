@@ -56,7 +56,13 @@
 		width : 200px;
 		height : 60px;
 		font-size: 24px;
-		background-color: #000000;
+		background-color: highlight;
+	}
+	#btn3{
+		width : 200px;
+		height : 60px;
+		font-size: 24px;
+		background-color: black;
 	}
 	button {
 		color: gray;
@@ -112,15 +118,39 @@
 		</div>
 		<hr>		
 	</div>
-	
 	<br> <br>
-	<div class="float-right">
-		<button id="btn2" type="button" class="btn btn-primary" onclick="history.back()">이전</button> <br><br><br>
+	<div>
+		<table class="table">
+			<tr>
+				<td>댓글 번호</td>
+				<td>댓글 내용</td>
+				<td>작성 일자</td>
+			</tr>
+			<c:forEach items="${ board.comments }" var="comment">
+				<tr>
+					<td>${ comment.cnum }</td>
+					<td>${ comment.content }</td>
+					<td><fmt:formatDate value="${ comment.regdate }" pattern="yyyy-MM-dd" /></td>
+				</tr>
+			</c:forEach>
+		</table><hr>
+		<c:if test="${ not empty principal.user }"><br/>
+			<div>
+				<textarea rows="3" cols="110" id="msg"></textarea>
+				<div class="float-right">
+					<button id="btn2" type="button" class="btn btn-primary" id="btnComment">댓글쓰기</button>
+				</div>
+			</div>
+		</c:if>
+	</div>
+	<div class="float-letf">
+		<button id="btn3" type="button" class="btn btn-primary" onclick="history.back()">이전</button> <br><br><br>
 	</div>
 </div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1253c1261bc7379cfd6cf07b68488458"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
 <script>
+	//========================================= 지도 =========================================
 	var container = document.getElementById('map'); // 지도를 표시할 div
 	var place = '<c:out value="${spot.sight}"/>';
 	var latitude = '<c:out value="${spot.latitude}"/>';
@@ -154,6 +184,53 @@
 
 	// 마커 위에 인포윈도우를 표시. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됨.
 	infowindow.open(map, marker);
+	//========================================= 댓글 =========================================
+	// 댓글 쓰기
+	$("#btnComment").click(function() {
+		if($("#msg").val == ""){
+			alert("댓글을 입력하세요");
+			return;
+		}
+		data = {
+			"content" : $("#msg").val(),
+			"writer" : "${principal.user.username}"
+		}
+		$.ajax({
+			type : "POST",
+			url : "/comment/insert/" + ${spot.id},
+			contentType : "application/json;charset=utf-8",
+			data : JSON.stringify(data)
+		})
+		.done(function() {
+			location.href="/busan/" + ${spot.id};
+			return;
+		})
+		.fail(function() {
+			alert("댓글 추가 실패")
+		})
+	})
+	// 댓글 리스트
+	var init = function() {
+		$.ajax({
+			type : "GET",
+			url : "/reply/list/" + $("#num").val(),
+			data : {
+				"bnum" : $("#num").val()
+			}
+		})
+		.done(function(resp) {
+			var str = "";
+			$.each(resp, function(key, val) {
+				str += val.user.id + "  "
+				str += val.content + "  "
+				str += val.regdate + "<br>"
+			})
+			$("#replyResult").html(str);
+		})
+		.fail(function(e) {
+			alert("Error : " + e);
+		})
+	}
 </script>
 </body>
 </html>

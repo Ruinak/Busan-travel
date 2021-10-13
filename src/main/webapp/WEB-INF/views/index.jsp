@@ -73,12 +73,12 @@
 				<div class="col s12 m4">
 					<div class="card">
 						<div class="card-image waves-effect waves-block waves-light">
-							<a href="/join">
+							<a href="/busan/recommand">
 								<img class="activator" src="images/boogi2.jpg">
 							</a>
 						</div>
 						<div class="card-content">
-							<a href="/join">
+							<a href="/busan/recommand">
 								<span id="text">맞춤 관광지</span>
 							</a>							
 						</div>
@@ -87,12 +87,12 @@
 				<div class="col s12 m4">
 					<div class="card">
 						<div class="card-image waves-effect waves-block waves-light">
-							<a href="/join">
+							<a href="/blog/blogMain">
 								<img class="activator" src="images/boogi3.jpg">
 							</a>
 						</div>
 						<div class="card-content">
-							<a href="/join">
+							<a href="/blog/blogMain">
 								<span id="text">여행 이야기</span>
 							</a>							
 						</div>
