@@ -22,7 +22,7 @@ public class BlogController {
 	// 여행이야기 이동, 리스팅
 	@GetMapping("/blog/blogMain")
 	public String blog(Model model,
-			@PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+			@PageableDefault(size = 3, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
 		Page<Blog> lists = blogService.list(pageable);
 		model.addAttribute("lists", lists);
 		return "blog/blogMain";

@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cos.travel.model.Spot;
 import com.cos.travel.repository.SpotRepository;
+import com.cos.travel.web.dto.search.SearchDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -35,5 +36,20 @@ public class SpotService {
 	@Transactional(readOnly = true)
 	public Page<Spot> recommand(String userPreference, Pageable pageable){
 		return spotRepository.recommandUser(userPreference, pageable);
+	}
+	
+	// 관광지 검색하기
+	@Transactional(readOnly = true)
+	public Page<Spot> searchByText(SearchDto dto, Pageable pageable) {
+		Page<Spot> spotList = null;
+		switch (dto.getGubun()) {
+		case "관광지명":
+			spotList = spotRepository.findBySightContaining(dto.getText(), pageable);
+			break;
+		case "제목 내용":
+			spotList = spotRepository.findByText(dto.getText(), pageable);
+			break;
+		}
+		return spotList;
 	}
 }

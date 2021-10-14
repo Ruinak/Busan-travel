@@ -77,6 +77,14 @@
 		color: fuchsia;
 		border-color: fuchsia;
 	}
+	th {
+		font-size: 20px;
+		text-align: center;
+	}
+	td {
+		font-size: 22px;
+		padding-left: 10px;
+	}
 </style>
 </head>
 <body>
@@ -120,20 +128,21 @@
 	</div> <br> <br>
 	<div>
 		<table class="table">
-			<tr>
-				<td>댓글 번호</td>
-				<td>댓글 내용</td>
-				<td>작성 일자</td>
-			</tr>
-			<c:forEach items="${ clist }" var="clist">
+			<thead class="thead-dark">
 				<tr>
-					<td>${ clist.cid }</td>
-					<td>${ clist.content }</td>
-					<td><fmt:formatDate value="${ clist.regdate }" pattern="yyyy-MM-dd" /></td>
+					<th scope="col" style="width:25%">댓글 작성자</th>
+					<th scope="col" style="width:50%">댓글 내용</th>
+					<th scope="col" style="width:25%">작성 일자</th>
 				</tr>
-			</c:forEach>
-		</table><hr>
-		<div id="replyResult"></div>	
+			</thead>
+			<tbody>
+				<tr>
+					<td id="replyResultWriter"></td>
+					<td id="replyResultContent"></td>
+					<td id="replyResultRegdate"></td>
+				</tr>
+			</tbody>
+		</table><hr>	
 		<c:if test="${ not empty principal.user }"><br/>
 			<div>
 				<textarea rows="3" cols="110" id="msg"></textarea>
@@ -216,14 +225,16 @@
 			url : "/comment/list/" + ${spot.id},
 		})
 		.done(function(resp) {
-			var str = "";
+			var str1, str2, str3 = "";
 			$.each(resp, function(key, val) {
-				str += val.writer + "  "
-				str += val.content + "  "
-				str += val.regdate + "<br>"
+				str1 += val.writer + "<br>"
+				str2 += val.content + "<br>"
+				str3 += val.regdate + "<br>"
 // 				str += "<a href='javascript:fdel("+val.cnum+")'>삭제</a><br>"
 			})
-			$("#replyResult").html(str);
+			$("#replyResultWriter").html(str1);
+			$("#replyResultContent").html(str2);
+			$("#replyResultRegdate").html(str3);
 		})
 		.fail(function() {
 			alert("댓글 불러오기 실패");

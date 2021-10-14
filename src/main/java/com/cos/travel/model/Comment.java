@@ -31,7 +31,7 @@ public class Comment {
 	
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @JsonFormat(pattern ="yyyy-MM-dd")
+    @JsonFormat(pattern ="yyyy-MM-dd HH:mm:ss")
     private Date regdate;
 	
     // 외래키 제약

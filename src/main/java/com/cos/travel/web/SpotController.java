@@ -1,11 +1,13 @@
 package com.cos.travel.web;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
@@ -14,6 +16,7 @@ import com.cos.travel.model.Spot;
 import com.cos.travel.model.Tagspot;
 import com.cos.travel.service.SpotService;
 import com.cos.travel.service.TagspotService;
+import com.cos.travel.web.dto.search.SearchDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -55,4 +58,15 @@ public class SpotController {
 		model.addAttribute("spots", spotService.recommand(userPreference, pageable));
 		return "busan/recommand";
 	}
+	
+	// 관광지 검색하기.
+	@GetMapping("/busan/search")
+	public String searchSight(Model model, 
+			@ModelAttribute SearchDto dto, 
+			@PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
+		Page<Spot> spots = spotService.searchByText(dto, pageable);
+		model.addAttribute("spots", spots);
+		model.addAttribute("searchDto", dto);
+		return "busan/searchList";
+		}
 }
