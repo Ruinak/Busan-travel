@@ -33,6 +33,9 @@ public class Spot {
 	private String theme;
 	
 	@Column(nullable = false)
+	private String tag;
+	
+	@Column(nullable = false)
 	private String town;
 	
 	@Column(nullable = false)
@@ -61,6 +64,9 @@ public class Spot {
 	
 	@Column(nullable = false)
 	private String detail;
+	
+	@Column(nullable = false)
+	private Double score;
 	
 	@Column
 	private int recommend;

@@ -30,30 +30,27 @@ public class SpotController {
 	// 인기 관광지로 이동하기
 	@GetMapping("/busan/popular")
 	public String popular(Model model,
-			@PageableDefault(size = 9, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
+			@PageableDefault(size = 9, sort = "score", direction = Sort.Direction.ASC) Pageable pageable) {
 		model.addAttribute("spots", spotService.list(pageable));
 		return "busan/popular";
 	}
 	
 	// 관광지 상세보기
 	@GetMapping("/busan/{id}")
-	public String findById(@PathVariable int id, Model model1, Model model2) {
+	public String findById(@PathVariable int id, Model model) {
 		Spot spot = spotService.detail(id);
 		Tagspot tagspot = tagspotService.detail(id);
-		model1.addAttribute("spot", spot);
-		model2.addAttribute("tagspot", tagspot);
+		model.addAttribute("spot", spot);
+		model.addAttribute("tagspot", tagspot);
 		return "busan/popularDetail";
 	}
 	
 	// 맞춤 여행지
 	@GetMapping("/busan/recommand")
-	public String recommand(Model model,
-					@AuthenticationPrincipal PrincipalDetails principalDetails,
-					@PageableDefault(size = 9, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
-		
+	public String recommand(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails,
+			@PageableDefault(size = 9, sort = "score", direction = Sort.Direction.ASC) Pageable pageable) {
 		// db에서 여행테마 받아서 쿼리문 형태로 전환 "여행,힐링 -> 여행|힐링"
 		String userPreference = principalDetails.getUser().getPreference().replaceAll(",", "|");
-		
 		// 쿼리결과를 spots에 담아서 jsp파일에 뿌림
 		model.addAttribute("spots", spotService.recommand(userPreference, pageable));
 		return "busan/recommand";
@@ -61,12 +58,11 @@ public class SpotController {
 	
 	// 관광지 검색하기.
 	@GetMapping("/busan/search")
-	public String searchSight(Model model, 
-			@ModelAttribute SearchDto dto, 
-			@PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
+	public String searchSight(Model model, @ModelAttribute SearchDto dto, 
+			@PageableDefault(size = 5, sort = "score", direction = Sort.Direction.DESC) Pageable pageable){
 		Page<Spot> spots = spotService.searchByText(dto, pageable);
 		model.addAttribute("spots", spots);
 		model.addAttribute("searchDto", dto);
 		return "busan/searchList";
-		}
+	}
 }

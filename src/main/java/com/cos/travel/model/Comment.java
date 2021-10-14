@@ -42,5 +42,5 @@ public class Comment {
     // 외래키 제약
     @ManyToOne
     @JoinColumn(name="u_id")
-    private User user;
+    private User user;    
 }

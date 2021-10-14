@@ -7,11 +7,13 @@
 <meta charset="UTF-8">
 <title>검색 결과</title>
 <style>
+h6 {
+	color: blue;
+}
 .card:hover {
 	color: silver;
 	cursor: pointer;
 }
-
 img {
 	width: 300px;
 	height: 180px;
@@ -28,8 +30,9 @@ img {
 						<img class="activator" src="${spot.thumurl }">
 					</div> 
 					<div style="float:left; width:50%;"> 
-						<h5>${spot.sight}</h5>
-						<h6>${spot.title}</h6>
+						<h4>${spot.sight}</h4>
+						<h5>${spot.title}</h5>
+						<h6>${spot.tag}</h6>
 					</div>
 				</div>
 			</div>
