@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import com.cos.travel.model.Comment;
 
 public interface CommentRepository extends JpaRepository<Comment, Integer> {
-	@Query(value="SELECT * FROM comment WHERE s_id=?1", nativeQuery = true) // fetch 조인도 있음, tbl_comment3는 Entity명
+	@Query(value="SELECT * FROM comment WHERE s_id=?1", nativeQuery = true) 
 	public List<Comment> findByS_id(int num);
 }

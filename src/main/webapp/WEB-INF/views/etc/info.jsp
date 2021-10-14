@@ -14,6 +14,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.list-group1 {
+	width: 100%;
+	display: flex;
+}
+.list-group {
+	width: 50%;
+	height: 100%;
+	margin: 10px;
+	text-align: center;
+}
+</style>
 </head>
 <body>
 	<%!LocalDate now = LocalDate.now();
@@ -23,25 +35,29 @@
 	String dayName = dayofWeek.getDisplayName(TextStyle.FULL, Locale.KOREAN);%>
 	<div class="container">
 		<h2> 부산 코로나 현황 (<%=month%>월 <%=day%>일 <%=dayName%> 집계 기준) </h2> <br>
-		<ul class="list-group">
-			<li class="list-group-item"> 부산시 누적 확진자 수 </li>
-			<li class="list-group-item"> 확진자 수 <span id="confirmed" style="color:red;"></span>명</li>
-			<li class="list-group-item"> 격리해제 수 <span id="released" style="color:red;"></span>명</li>
-			<li class="list-group-item"> 사망 수 <span id="death" style="color:red;"></span>명</li>
-		</ul> <br>
-		<ul class="list-group">
-			<li class="list-group-item"> 부산시 접종자 수 </li>
-			<li class="list-group-item"> 1차 접종
-					어제 <span id="1st" style="color:red;"></span>명
-					누적 <span id="1st2" style="color:red;"></span>명
-			</li>
-			<li class="list-group-item"> 2차 접종
-					어제 <span id="2nd" style="color:red;"></span>명
-					누적 <span id="2nd2" style="color:red;"></span>명
-			</li>
-		</ul> <br>
-		<div style="text-align:center;"><img src="images/images1.png" style="width:100%; height:100%; object-fit: cover;"></div>
-		<br> <br>
+		<div class="list-group1">
+			<ul class="list-group">
+				<li class="list-group-item"> 부산시 누적 확진자 수 </li>
+				<li class="list-group-item"> 확진자 수 <span id="confirmed" style="color:red;"></span>명</li>
+				<li class="list-group-item"> 격리해제 수 <span id="released" style="color:red;"></span>명</li>
+				<li class="list-group-item"> 사망 수 <span id="death" style="color:red;"></span>명</li>
+			</ul> <br>
+			<ul class="list-group">
+				<li class="list-group-item"> 부산시 접종자 수 </li>
+				<li class="list-group-item"> 1차 접종
+						어제 <span id="1st" style="color:red;"></span>명
+						누적 <span id="1st2" style="color:red;"></span>명
+				</li>
+				<li class="list-group-item"> 2차 접종
+						어제 <span id="2nd" style="color:red;"></span>명
+						누적 <span id="2nd2" style="color:red;"></span>명
+				</li>
+				<li class="list-group-item" style="color:white;">-</li>
+			</ul>
+		</div> <br>
+		<div style="text-align:center;">
+			<img src="images/images1.png" style="width:100%; height:100%; object-fit: cover;">
+		</div> <br> <br>
 		<h2>부산 날씨</h2> <br>
 		<table class="table table-hover" style="text-align: center">
 			<thead class="thead-light " style="font-wiehgt: bold;">

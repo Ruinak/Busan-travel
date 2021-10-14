@@ -1,7 +1,6 @@
 package com.cos.travel.web;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,7 +44,6 @@ public class CommentController {
 	// 댓글 리스트
 	@GetMapping("/comment/list/{num}")
 	public ResponseEntity<List<Comment>> list(@PathVariable int num){
-		System.out.println("num = " + num);
 		List<Comment> clist = commentService.list(num);
 		return new ResponseEntity<List<Comment>>(clist, HttpStatus.OK);
 	}

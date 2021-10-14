@@ -7,16 +7,20 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	.container {
-		width: 30%;
-		margin: auto;
-	}
-	#btn{
-		font-size: 24px;
-	}
-	#title {
-		text-align: center;
-	}
+.container {
+	width: 30%;
+	margin: auto;
+	font-size: 22px;
+}
+#btn {
+	font-size: 24px;
+}
+#title {
+	text-align: center;
+}
+.form-check-inline {
+	margin: 5px;
+}
 </style>
 </head>
 <body>
@@ -24,7 +28,6 @@
 	<br>
 		<div class="container">
 			<h1 id="title">회원 가입</h1>
-			<br>
 			<div class="form-group">
 				<label for="username">아이디:</label> <input type="text"
 					name="username" class="form-control" placeholder="아이디를 입력하세요"
@@ -130,8 +133,8 @@
 					</label>
 				</div><br>
 			</div>
-			<button type="submit" onclick="register(event);" class="btn btn-dark btn-block">회원가입</button>
-			<button type="button" class="btn btn-dark btn-block"
+			<button id="btn" type="submit" onclick="register(event);" class="btn btn-dark btn-block">회원가입</button>
+			<button id="btn" type="button" class="btn btn-dark btn-block"
 				onclick="location.href='/'">뒤로가기</button>
 		</div>
 	</form>

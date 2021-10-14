@@ -17,6 +17,7 @@ public class CommentService {
 	
 	private final CommentRepository commentRepository;
 	
+	// 댓글 쓰기
 	@Transactional
 	public void insert(Comment comment) {
 		commentRepository.save(comment);

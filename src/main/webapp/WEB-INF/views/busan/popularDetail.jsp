@@ -30,9 +30,9 @@
 		border : solid 1px;
 	}
 	p {
-		font-size: 18px;
+		font-size: 24px;
 		margin: 20px;
-		line-height: 1.8;
+		line-height: 1.5;
 	}
 	li {
 		font-size : 22px;
@@ -51,18 +51,21 @@
 	}
 	#btn1{ 
 		margin: 20px;
+		font-family: 'Nanum Gothic', sans-serif;
 	}	
 	#btnComment{
 		width : 200px;
 		height : 60px;
 		font-size: 24px;3
 		background-color: highlight;
+		font-family: 'Nanum Gothic', sans-serif;
 	}
 	#btn2{
 		width : 200px;
 		height : 60px;
 		font-size: 24px;
 		background-color: black;
+		font-family: 'Nanum Gothic', sans-serif;
 	}
 	button {
 		color: gray;
@@ -84,6 +87,8 @@
 	td {
 		font-size: 22px;
 		padding-left: 10px;
+		margin: auto;
+		padding: auto;
 	}
 </style>
 </head>
@@ -153,7 +158,7 @@
 		</c:if>
 	</div>
 	<div class="float-letf">
-		<button id="btn2" type="button" class="btn btn-primary" onclick="history.back()">이전</button> <br><br><br>
+		<button id="btn2" type="button" class="btn btn-primary" onclick="history.back()">목록으로</button> <br><br><br>
 	</div>
 </div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1253c1261bc7379cfd6cf07b68488458"></script>
@@ -225,7 +230,7 @@
 			url : "/comment/list/" + ${spot.id},
 		})
 		.done(function(resp) {
-			var str1, str2, str3 = "";
+			var str1 = "", str2 = "", str3 = "";
 			$.each(resp, function(key, val) {
 				str1 += val.writer + "<br>"
 				str2 += val.content + "<br>"

@@ -15,22 +15,31 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <style type="text/css">
-	#text {
-		font-size: 22px;
-		font-weight: 700;
-		center-align;
-	}
-	a {
-		color: black;
-		text-decoration: none;
-	}
-	img {
-		width: 417px;
-		height: 320px;
-	}
-	hr {
-		border : solid 1px;
-	}
+#text {
+	font-size: 22px;
+	font-weight: 700;
+	center-align;
+}
+a {
+	color: black;
+	text-decoration: none;
+}
+img {
+	width: 417px;
+	height: 320px;
+}
+hr {
+	border : solid 1px;
+}
+.nav-link1 { 
+	font-size: 20px;
+	width: auto;
+	text-align:center;
+	color: black;
+}
+#sel1, input, button {
+	font-family: 'Nanum Gothic', sans-serif;
+}
 </style>
 </head>
 <body>
@@ -50,7 +59,7 @@
 				<input class="form-control mr-sm-2" type="text" placeholder="Search" id="search" name="" 
 					style="float:center; width:75%; margin-left: 3%;">
 				<button class="btn btn-success" type="submit"
-					onclick="onSearch(event)" style="float:right; width:10%;">Search</button>
+					onclick="onSearch(event)" style="float:right; width:10%;">검색</button>
 			</form>
 		</div>
 		<!-- 테마 분류 -->
@@ -58,17 +67,17 @@
 			<div class="container-fluid">				
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link" href="#">자연</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">전시/체험</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">예술/건축물</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">운동/트레킹</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">가족/반려동물</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">공원</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">야경</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">사진</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">책</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">캠핑</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">역사/종교</a></li>
+						<li class="nav-item"><a class="nav-link1" href="#">자연</a></li>
+						<li class="nav-item"><a class="nav-link1" href="#">전시/체험</a></li>
+						<li class="nav-item"><a class="nav-link1" href="#">예술/건축물</a></li>
+						<li class="nav-item"><a class="nav-link1" href="#">운동/트레킹</a></li>
+						<li class="nav-item"><a class="nav-link1" href="#">가족/반려동물</a></li>
+						<li class="nav-item"><a class="nav-link1" href="#">공원</a></li>
+						<li class="nav-item"><a class="nav-link1" href="#">야경</a></li>
+						<li class="nav-item"><a class="nav-link1" href="#">사진</a></li>
+						<li class="nav-item"><a class="nav-link1" href="#">책</a></li>
+						<li class="nav-item"><a class="nav-link1" href="#">캠핑</a></li>
+						<li class="nav-item"><a class="nav-link1" href="#">역사/종교</a></li>
 					</ul>
 				</div>
 			</div>
@@ -97,11 +106,11 @@
 			<c:choose>
 				<c:when test="${spots.first}">
 					<li class="page-item disabled"><a class="page-link"
-						href="?page=${spots.number-1}">이전</a></li>
+						href="?page=${spots.number-1}">&lt</a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="page-item "><a class="page-link"
-						href="?page=${spots.number-1}">이전</a></li>
+						href="?page=${spots.number-1}">&lt</a></li>
 				</c:otherwise>
 			</c:choose>
 			<c:forEach var="i" begin="1" end="${spots.totalPages}" step="1">
@@ -119,11 +128,11 @@
 			<c:choose>
 				<c:when test="${spots.last}">
 					<li class="page-item disabled"><a class="page-link"
-						href="?page=${spots.number+1}">다음</a></li>
+						href="?page=${spots.number+1}">></a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="page-item"><a class="page-link"
-						href="?page=${spots.number+1}">다음</a></li>
+						href="?page=${spots.number+1}">></a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>

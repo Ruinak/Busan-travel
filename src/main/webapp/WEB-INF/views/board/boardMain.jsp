@@ -15,7 +15,7 @@
 			<input class="form-control mr-sm-2" type="text" placeholder="Search"
 				id="search" name="">
 			<button class="btn btn-success" type="submit"
-				onclick="onSearch(event)">Search</button>
+				onclick="onSearch(event)">검색</button>
 		</form>
 	</div>
 	<table class="table table-hover" style="text-align: center">
@@ -66,11 +66,11 @@
 		<c:choose>
 			<c:when test="${boards.first}">
 				<li class="page-item disabled"><a class="page-link"
-					href="?page=${boards.number-1}&gubun=${param.gubun}&text=${param.text}">이전</a></li>
+					href="?page=${boards.number-1}&gubun=${param.gubun}&text=${param.text}">&lt</a></li>
 			</c:when>
 			<c:otherwise>
 				<li class="page-item "><a class="page-link"
-					href="?page=${boards.number-1}&gubun=${param.gubun}&text=${param.text}">이전</a></li>
+					href="?page=${boards.number-1}&gubun=${param.gubun}&text=${param.text}">&lt</a></li>
 			</c:otherwise>
 		</c:choose>
 		<c:forEach var="i" begin="1" end="${boards.totalPages}" step="1">
@@ -88,11 +88,11 @@
 		<c:choose>
 			<c:when test="${boards.last}">
 				<li class="page-item disabled"><a class="page-link"
-					href="?page=${boards.number+1}&gubun=${param.gubun}&text=${param.text}">다음</a></li>
+					href="?page=${boards.number+1}&gubun=${param.gubun}&text=${param.text}">></a></li>
 			</c:when>
 			<c:otherwise>
 				<li class="page-item"><a class="page-link"
-					href="?page=${boards.number+1}&gubun=${param.gubun}&text=${param.text}">다음</a></li>
+					href="?page=${boards.number+1}&gubun=${param.gubun}&text=${param.text}">></a></li>
 			</c:otherwise>
 		</c:choose>
 	</ul>

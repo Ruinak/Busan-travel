@@ -53,11 +53,11 @@
 			<c:choose>
 				<c:when test="${spots.first}">
 					<li class="page-item disabled"><a class="page-link"
-						href="?page=${spots.number-1}">이전</a></li>
+						href="?page=${spots.number-1}">&lt</a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="page-item "><a class="page-link"
-						href="?page=${spots.number-1}">이전</a></li>
+						href="?page=${spots.number-1}">&lt</a></li>
 				</c:otherwise>
 			</c:choose>
 			<c:forEach var="i" begin="1" end="${spots.totalPages}" step="1">
@@ -75,11 +75,11 @@
 			<c:choose>
 				<c:when test="${spots.last}">
 					<li class="page-item disabled"><a class="page-link"
-						href="?page=${spots.number+1}">다음</a></li>
+						href="?page=${spots.number+1}">></a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="page-item"><a class="page-link"
-						href="?page=${spots.number+1}">다음</a></li>
+						href="?page=${spots.number+1}">></a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>

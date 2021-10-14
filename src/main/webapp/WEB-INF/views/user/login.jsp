@@ -7,22 +7,26 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	.container {
-		width: 30%;
-		margin: auto;
-	}
-	#btn {
-		font-size: 24px;
-	}
-	#title {
-		text-align: center;
-	}
+.container {
+	width: 30%;
+	margin: auto;
+	font-size: 22px;
+}
+#btn, #btnDelete {
+	font-size: 24px;
+}
+#title {
+	text-align: center;
+}
+.form-check-inline {
+	margin: 5px;
+}
 </style>
 </head>
 <body>
 	<form action="/login" method="post">
 		<div class="container">
-			<br> <br> <br>
+			<br> <br>
 			<h1 id="title">로그인</h1>
 			<br> <br>
 			<div class="form-group">
@@ -36,7 +40,7 @@
 					required="required">
 			</div> <br>
 			<button id="btn" class="btn btn-dark btn-sm btn-block">로그인</button>
-			<br> <br>
+			<br>
 			<button id="btn" type="button" class="btn btn-dark btn-sm btn-block"
 				onclick="location.href='/'">메인페이지</button>
 		</div>

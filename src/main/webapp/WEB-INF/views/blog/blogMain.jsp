@@ -16,7 +16,7 @@
 			<input class="form-control mr-sm-2" type="text" placeholder="Search"
 				id="search" name="">
 			<button class="btn btn-success" type="submit"
-				onclick="onSearch(event)">Search</button>
+				onclick="onSearch(event)">검색</button>
 		</form>
 	</div>
 	<div class="clearfix"></div>
@@ -46,11 +46,11 @@
 			<c:choose>
 				<c:when test="${lists.first}">
 					<li class="page-item disabled"><a class="page-link"
-						href="?page=${lists.number-1}&gubun=${param.gubun}&text=${param.text}">이전</a></li>
+						href="?page=${lists.number-1}&gubun=${param.gubun}&text=${param.text}">&lt</a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="page-item "><a class="page-link"
-						href="?page=${lists.number-1}&gubun=${param.gubun}&text=${param.text}">이전</a></li>
+						href="?page=${lists.number-1}&gubun=${param.gubun}&text=${param.text}">&lt</a></li>
 				</c:otherwise>
 			</c:choose>
 
@@ -71,12 +71,12 @@
 			<c:choose>
 				<c:when test="${lists.last}">
 					<li class="page-item disabled"><a class="page-link"
-						href="?page=${lists.number+1}&gubun=${param.gubun}&text=${param.text}">다음</a></li>
+						href="?page=${lists.number+1}&gubun=${param.gubun}&text=${param.text}">></a></li>
 
 				</c:when>
 				<c:otherwise>
 					<li class="page-item"><a class="page-link"
-						href="?page=${lists.number+1}&gubun=${param.gubun}&text=${param.text}">다음</a></li>
+						href="?page=${lists.number+1}&gubun=${param.gubun}&text=${param.text}">></a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>

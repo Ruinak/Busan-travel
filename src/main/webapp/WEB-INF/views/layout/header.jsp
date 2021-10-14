@@ -16,6 +16,22 @@
 <title>Respect Your Busan!</title>
 <!-- Bootstrap -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap');
+.container, nav { 
+	font-family: 'Nanum Gothic', sans-serif;
+}
+.nav-link { 
+	font-size: 24px;
+	width: 200px;
+	text-align:center;
+}
+#home{
+	font-size: 24px;
+	width: 250px;
+	margin-left: 100px;
+}
+</style>
 </head>
 <body>
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark">

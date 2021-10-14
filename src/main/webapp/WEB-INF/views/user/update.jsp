@@ -6,11 +6,27 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.container {
+	width: 30%;
+	margin: auto;
+	font-size: 22px;
+}
+#btn, #btnDelete {
+	font-size: 24px;
+}
+#title {
+	text-align: center;
+}
+.form-check-inline {
+	margin: 5px;
+}
+</style>
 </head>
 <body>
 	<div class="container">
 		<form id="userUpdate" onsubmit="update(${principal.user.id}, event)">
-			<h1>회원 정보 수정</h1>
+			<h1 id="title">회원 정보 수정</h1>
 			<br> <br>
 			<div class="form-group">
 				<label for="username">아이디:</label> 
@@ -112,9 +128,9 @@
 					</label>
 				</div><br>
 			</div>
-			<button class="btn btn-primary">수정</button>
+			<button id="btn" class="btn btn-primary">수정</button>
 			<button type="button" id="btnDelete" class="btn btn-danger">탈퇴</button>
-			<button type="button" class="btn btn-dark"
+			<button id="btn" type="button" class="btn btn-dark"
 				onclick="history.back()">뒤로 가기</button>
 		</form>
 	</div>

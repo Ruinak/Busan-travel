@@ -33,11 +33,11 @@
 			<c:when test="${principal.user.role == 'ROLE_ADMIN'}">
 				<button class="btn btn-primary" onclick="location.href='/board/noticeupdate/${board.id}'">수정</button>
 				<button type="button" class="btn btn-primary"
-					onclick="history.back()">이전</button>
+					onclick="history.back()">목록으로</button>
 			</c:when>
 			<c:otherwise>
 				<button type="button" class="btn btn-primary"
-					onclick="history.back()">이전</button>
+					onclick="history.back()">목록으로</button>
 			</c:otherwise>
 		</c:choose>
 	</div>
