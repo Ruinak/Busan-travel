@@ -1,17 +1,20 @@
 package com.cos.travel.web;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.cos.travel.model.Restaurant;
 import com.cos.travel.model.Tagrestaurant;
 import com.cos.travel.service.RestaurantService;
 import com.cos.travel.service.TagrestaurantService;
+import com.cos.travel.web.dto.search.SearchDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -38,5 +41,15 @@ public class RestaurantController {
 		model1.addAttribute("restaurant", restaurant);
 		model2.addAttribute("tagrestaurant", tagrestaurant);
 		return "restaurant/restaurantDetail";
+	}
+	
+	// 맛집 검색하기.
+	@GetMapping("/restaurant/search")
+	public String searchRestaurant(Model model, @ModelAttribute SearchDto dto, 
+			@PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
+		Page<Restaurant> restaurants = restaurantService.searchByText(dto, pageable);
+		model.addAttribute("restaurants", restaurants);
+		model.addAttribute("searchDto", dto);
+		return "restaurant/searchList";
 	}
 }

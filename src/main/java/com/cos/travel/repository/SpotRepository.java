@@ -21,4 +21,15 @@ public interface SpotRepository extends JpaRepository<Spot, Integer> {
 			countQuery = "SELECT count(*) FROM spot WHERE title LIKE %?1% or detail LIKE %?1%",
 		    nativeQuery = true)
 	Page<Spot> findByText(String searchText, Pageable pageable);
+	
+	// 해시태그로 검색하기.
+	Page<Spot> findByTagContaining(String tag, Pageable pageable);
+	
+	// 테마별 관광지 조회하기 - 한가지 테마일때
+	Page<Spot> findByThemeContaining(String theme, Pageable pageable);
+	
+	// 테마별 관광지 조회하기 - 두가지 테마일때
+	@Query(value = "SELECT * FROM spot WHERE " + "theme LIKE %?1% or " + "theme LIKE %?2% ",
+		    nativeQuery = true)
+	Page<Spot> findByTwoTheme(String theme1, String theme2, Pageable pageable);
 }

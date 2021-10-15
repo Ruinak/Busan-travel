@@ -54,6 +54,7 @@ hr {
 						<option>검색</option>
 						<option>관광지명</option>
 						<option>제목+내용</option>
+						<option>해시태그</option>
 					</select>
 				</div>
 				<input class="form-control mr-sm-2" type="text" placeholder="Search" id="search" name="" 
@@ -67,17 +68,17 @@ hr {
 			<div class="container-fluid">				
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link1" href="#">자연</a></li>
-						<li class="nav-item"><a class="nav-link1" href="#">전시/체험</a></li>
-						<li class="nav-item"><a class="nav-link1" href="#">예술/건축물</a></li>
-						<li class="nav-item"><a class="nav-link1" href="#">운동/트레킹</a></li>
-						<li class="nav-item"><a class="nav-link1" href="#">가족/반려동물</a></li>
-						<li class="nav-item"><a class="nav-link1" href="#">공원</a></li>
-						<li class="nav-item"><a class="nav-link1" href="#">야경</a></li>
-						<li class="nav-item"><a class="nav-link1" href="#">사진</a></li>
-						<li class="nav-item"><a class="nav-link1" href="#">책</a></li>
-						<li class="nav-item"><a class="nav-link1" href="#">캠핑</a></li>
-						<li class="nav-item"><a class="nav-link1" href="#">역사/종교</a></li>
+						<li class="nav-item"><a class="nav-link1" href="/busan/popular/자연">자연</a></li>
+						<li class="nav-item"><a class="nav-link1" href="/busan/popular/전시체험">전시/체험</a></li>
+						<li class="nav-item"><a class="nav-link1" href="/busan/popular/예술or건축물">예술/건축물</a></li>
+						<li class="nav-item"><a class="nav-link1" href="/busan/popular/운동or트레킹">운동/트레킹</a></li>
+						<li class="nav-item"><a class="nav-link1" href="/busan/popular/가족or반려동물">가족/반려동물</a></li>
+						<li class="nav-item"><a class="nav-link1" href="/busan/popular/공원">공원</a></li>
+						<li class="nav-item"><a class="nav-link1" href="/busan/popular/야경">야경</a></li>
+						<li class="nav-item"><a class="nav-link1" href="/busan/popular/사진">사진</a></li>
+						<li class="nav-item"><a class="nav-link1" href="/busan/popular/책">책</a></li>
+						<li class="nav-item"><a class="nav-link1" href="/busan/popular/캠핑">캠핑</a></li>
+						<li class="nav-item"><a class="nav-link1" href="/busan/popular/역사or종교">역사/종교</a></li>
 					</ul>
 				</div>
 			</div>
@@ -137,6 +138,9 @@ hr {
 			</c:choose>
 		</ul>
 	</div>
+<!-- footer start-->
+<%@ include file="../layout/footer.jsp"%>
+<!-- footer end -->
 <script>
 function onSearch(event) {
 	event.preventDefault()

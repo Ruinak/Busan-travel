@@ -26,26 +26,22 @@
 <body>
 	<div class="container">
 		<form id="userUpdate" onsubmit="update(${principal.user.id}, event)">
-			<h1 id="title">회원 정보 수정</h1>
-			<br> <br>
+			<h1 id="title">회원 정보 수정</h1> <br> <br>
 			<div class="form-group">
 				<label for="username">아이디:</label> 
 				<input type="text" name="username" class="form-control" value="${principal.user.username}" 
 				required="required"	disabled="disabled">
 			</div>
-
 			<div class="form-group">
 				<label for=password>비밀번호:</label> <input type="password"
 					name="password" class="form-control" placeholder="비밀번호를 입력하세요"
 					required="required">
 			</div>
-
 			<div class="form-group">
 				<label for="email">이메일:</label> <input type="email"
 					class="form-control" name="email" placeholder="이메일을 입력하세요"
 					value="${principal.user.email}" required="required" maxlength="50">
 			</div>
-
 			<label for="gender">성별:</label>
 			<div class="form-check">
 				<label class="form-check-label"> <input type="radio"
@@ -56,8 +52,7 @@
 				<label class="form-check-label"> <input type="radio"
 					class="form-check-input" name="gender" value="female">여성
 				</label>
-			</div>
-			<br>
+			</div> <br>
 			<div class="form-group">
 				<label for="age">나이:</label> <select class="form-control" name="age">
 					<option value='10' selected>19세 이하</option>
@@ -127,33 +122,33 @@
 						class="form-check-input" name="preference" value="역사,종교">역사/종교
 					</label>
 				</div><br>
-			</div>
+			</div><br>
 			<button id="btn" class="btn btn-primary">수정</button>
 			<button type="button" id="btnDelete" class="btn btn-danger">탈퇴</button>
 			<button id="btn" type="button" class="btn btn-dark"
 				onclick="history.back()">뒤로 가기</button>
 		</form>
-	</div>
-	
-	<script>
-	$("#btnDelete").click(function(){
-		if(!confirm("정말 삭제할까요?"))
-			return false
-		$.ajax({
-			type :"DELETE",
-			url : "/user/${principal.user.id}/delete",
-			success:function(resp){
-				console.log(resp);
-				if(resp=="success"){
-					alert("삭제성공");
-					location.href="/"
-				}
-			} //success
-		})//ajax
-	})  //btnDelete
-	
-	</script>
-	<script src="/js/update.js"></script>
-
+	</div><br>
+<!-- footer start-->
+<%@ include file="../layout/footer.jsp"%>
+<!-- footer end -->	
+<script>
+$("#btnDelete").click(function(){
+	if(!confirm("정말 삭제할까요?"))
+		return false
+	$.ajax({
+		type :"DELETE",
+		url : "/user/${principal.user.id}/delete",
+		success:function(resp){
+			console.log(resp);
+			if(resp=="success"){
+				alert("삭제성공");
+				location.href="/"
+			}
+		} //success
+	})//ajax
+})  //btnDelete
+</script>
+<script src="/js/update.js"></script>
 </body>
 </html>

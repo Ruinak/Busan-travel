@@ -74,6 +74,9 @@
 		</ul>
 	</div>
 </div>
+<!-- footer start-->
+<%@ include file="../layout/footer.jsp"%>
+<!-- footer end -->
 <script>
 	$("button[name='btnDelete']").click(function() {
 		if (!confirm("정말 삭제할까요?"))

@@ -25,10 +25,8 @@
 </head>
 <body>
 	<form action="/login" method="post">
-		<div class="container">
-			<br> <br>
-			<h1 id="title">로그인</h1>
-			<br> <br>
+		<div class="container"> <br> <br>
+			<h1 id="title">로그인</h1> <br> <br>
 			<div class="form-group">
 				<label for="username">아이디:</label> <input type="text"
 					name="username" class="form-control" placeholder="아이디를 입력하세요"
@@ -44,6 +42,9 @@
 			<button id="btn" type="button" class="btn btn-dark btn-sm btn-block"
 				onclick="location.href='/'">메인페이지</button>
 		</div>
-	</form>
+	</form><br><br>
+<!-- footer start-->
+<%@ include file="../layout/footer.jsp"%>
+<!-- footer end -->
 </body>
 </html>

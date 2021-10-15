@@ -58,7 +58,7 @@
 								<a class="nav-link" href="/admin/userlist" id="userManager">회원 관리</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="/blog/blogMain" id="board">여행 이야기 관리</a>
+								<a class="nav-link" href="/blog/blogMain" id="trevel">여행 이야기 관리</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="/board/boardMain" id="notice">공지사항 관리</a>

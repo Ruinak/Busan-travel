@@ -161,6 +161,9 @@
 		<button id="btn2" type="button" class="btn btn-primary" onclick="history.back()">목록으로</button> <br><br><br>
 	</div>
 </div>
+<!-- footer start-->
+<%@ include file="../layout/footer.jsp"%>
+<!-- footer end -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1253c1261bc7379cfd6cf07b68488458"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
 <script>

@@ -5,30 +5,29 @@
 	<h1>공지사항</h1> <br>
 	<div class="form-group">
 		<label for="id">글 번호:</label> <input type="text" id="id"
-			class="form-control" value="${board.id }" disabled="disabled">
+			class="form-control" value="${blog.id }" disabled="disabled">
 	</div>
 	<div class="form-group">
 		<label for="username">글 작성자:</label> <input type="text"
-			name="username" class="form-control" value="${board.user.username}"
+			name="username" class="form-control" value="${blog.user.username}"
 			disabled="disabled">
 	</div>
 	<form>
 		<div class="form-group">
 			<label for="title">제목:</label> <input type="text"
-				class="form-control" value="${board.title}" id="title">
+				class="form-control" value="${blog.title}" id="title">
 		</div>
 		<div class="form-group">
 			<label for="comment">내용:</label>
-			<textarea class="form-control summernote" rows="5" id="content">${board.content}</textarea>
+			<textarea class="form-control summernote" rows="5" id="content">${blog.content}</textarea>
 		</div>
 	</form>
 	<p style="font-size:12px; color:red;">※사진 첨부시 사진을 클릭하여 사이즈를 50%이하로 줄여 주세요! </p>
 	<div class="float-right">
-		<button class="btn btn-primary" id="btn-update">수정 완료</button>
-		<button type="button" id="btnDelete" class="btn btn-danger">삭제</button>
-		<button type="button" class="btn btn-primary" onclick="history.back()">이전</button>
-	</div>
-	<br>
+				<button class="btn btn-primary" id="btn-update">수정 완료</button>
+				<button type="button" id="btnDelete" class="btn btn-danger">삭제</button>
+				<button type="button" class="btn btn-primary" onclick="history.back()">이전</button>
+	</div> <br>
 </div>
 <!-- footer start-->
 <%@ include file="../layout/footer.jsp"%>
@@ -39,12 +38,12 @@
 			return false
 		$.ajax({
 			type : "DELETE",
-			url : "/board/notice/"+${board.id},
+			url : "/blog/blogUpdate/"+${blog.id},
 			success : function(resp) {
 				console.log(resp);
 				if (resp == "success") {
 					alert("삭제성공");
-					location.href = "/board/notice"
+					location.href = "/blog/blogMain"
 				}
 			} //success
 		})//ajax
@@ -56,4 +55,4 @@
 		height : 300
 	});
 </script>
-<script src="/js/notice.js"></script>
+<script src="/js/blog.js"></script>

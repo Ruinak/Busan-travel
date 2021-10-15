@@ -84,5 +84,8 @@
 			</c:choose>
 		</ul>
 	</div>
+<!-- footer start-->
+<%@ include file="../layout/footer.jsp"%>
+<!-- footer end -->
 </body>
 </html>

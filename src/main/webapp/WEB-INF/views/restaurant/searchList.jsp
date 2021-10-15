@@ -7,9 +7,6 @@
 <meta charset="UTF-8">
 <title>검색 결과</title>
 <style>
-h6 {
-	color: blue;
-}
 .card:hover {
 	color: silver;
 	cursor: pointer;
@@ -33,7 +30,7 @@ img {
 					<label for="sel1"></label> 
 					<select class="form-control" id="sel1">
 						<option>검색</option>
-						<option>관광지명</option>
+						<option>가게이름</option>
 						<option>제목+내용</option>
 					</select>
 				</div>
@@ -43,16 +40,16 @@ img {
 					onclick="onSearch(event)" style="float:right; width:10%;">검색</button>
 			</form>
 		</div>
-		<c:forEach var="spot" items="${spots.content}">
-			<div class="card m-3" onClick="location.href='/busan/${spot.id }'">
+		<c:forEach var="restaurant" items="${restaurants.content}">
+			<div class="card m-3" onClick="location.href='/restaurant/${restaurant.id }'">
 				<div class="card-body">
 					<div style="float:left; width:30%;"> 
-						<img class="activator" src="${spot.thumurl }">
+						<img class="activator" src="${restaurant.thumurl }">
 					</div> 
 					<div style="float:left; width:50%;"> 
-						<h4>${spot.sight}</h4>
-						<h5>${spot.title}</h5>
-						<h6>${spot.tag}</h6>
+						<h4>${restaurant.restaurant}</h4>
+						<h5>${restaurant.menu}</h5>
+						<h6>${restaurant.address}</h6>
 					</div>
 				</div>
 			</div>
@@ -60,18 +57,18 @@ img {
 		<!-- 페이징 코드 -->
 		<ul class="pagination justify-content-center">
 			<c:choose>
-				<c:when test="${spots.first}">
+				<c:when test="${restaurants.first}">
 					<li class="page-item disabled"><a class="page-link"
-						href="?page=${spots.number-1}&gubun=${searchDto.gubun}&text=${searchDto.text}">&lt</a></li>
+						href="?page=${restaurants.number-1}&gubun=${searchDto.gubun}&text=${searchDto.text}">&lt</a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="page-item "><a class="page-link"
-						href="?page=${spots.number-1}&gubun=${searchDto.gubun}&text=${searchDto.text}">&lt</a></li>
+						href="?page=${restaurants.number-1}&gubun=${searchDto.gubun}&text=${searchDto.text}">&lt</a></li>
 				</c:otherwise>
 			</c:choose>
 			<c:forEach var="i" begin="1" end="${spots.totalPages}" step="1">
 				<c:choose>
-					<c:when test="${i eq spots.number+1}">
+					<c:when test="${i eq restaurants.number+1}">
 						<li class="page-item active"><a class="page-link"
 							href="?page=${i-1}&gubun=${searchDto.gubun}&text=${searchDto.text}">${i}</a></li>
 					</c:when>
@@ -82,13 +79,13 @@ img {
 				</c:choose>
 			</c:forEach>
 			<c:choose>
-				<c:when test="${spots.last}">
+				<c:when test="${restaurants.last}">
 					<li class="page-item disabled"><a class="page-link"
-						href="?page=${spots.number+1}&gubun=${searchDto.gubun}&text=${searchDto.text}">></a></li>
+						href="?page=${restaurants.number+1}&gubun=${searchDto.gubun}&text=${searchDto.text}">></a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="page-item"><a class="page-link"
-						href="?page=${spots.number+1}&gubun=${searchDto.gubun}&text=${searchDto.text}">></a></li>
+						href="?page=${restaurants.number+1}&gubun=${searchDto.gubun}&text=${searchDto.text}">></a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
@@ -111,7 +108,7 @@ function onSearch(event) {
 		$("#search").focus();
 		return false;
 	}
-	window.location = "/busan/search" + "?page=0&gubun=" + gubun
+	window.location = "/restaurants/search" + "?page=0&gubun=" + gubun
 			+ "&text=" + text;
 }
 </script>

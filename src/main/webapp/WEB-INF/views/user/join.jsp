@@ -24,8 +24,7 @@
 </style>
 </head>
 <body>
-	<form class="join_action" action="/join" method="post" id="myForm">
-	<br>
+	<form class="join_action" action="/join" method="post" id="myForm"> <br>
 		<div class="container">
 			<h1 id="title">회원 가입</h1>
 			<div class="form-group">
@@ -132,12 +131,15 @@
 						class="form-check-input" name="preference" value="역사,종교">역사/종교
 					</label>
 				</div><br>
-			</div>
+			</div><br>
 			<button id="btn" type="submit" onclick="register(event);" class="btn btn-dark btn-block">회원가입</button>
 			<button id="btn" type="button" class="btn btn-dark btn-block"
 				onclick="location.href='/'">뒤로가기</button>
 		</div>
-	</form>
+	</form><br><br>
+<!-- footer start-->
+<%@ include file="../layout/footer.jsp"%>
+<!-- footer end -->
 <script src="/js/join.js"></script>
 </body>
 </html>

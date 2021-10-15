@@ -38,18 +38,32 @@ public class SpotService {
 		return spotRepository.recommandUser(userPreference, pageable);
 	}
 	
-	// 관광지 검색하기
+	// 관광지 검색하기.
 	@Transactional(readOnly = true)
 	public Page<Spot> searchByText(SearchDto dto, Pageable pageable) {
 		Page<Spot> spotList = null;
 		switch (dto.getGubun()) {
-			case "관광지명":
-				spotList = spotRepository.findBySightContaining(dto.getText(), pageable);
-				break;
-			case "제목 내용":
-				spotList = spotRepository.findByText(dto.getText(), pageable);
-				break;
+		case "관광지명":
+			spotList = spotRepository.findBySightContaining(dto.getText(), pageable);
+			break;
+		case "제목 내용":
+			spotList = spotRepository.findByText(dto.getText(), pageable);
+			break;
+		case "해시태그":
+			spotList = spotRepository.findByTagContaining(dto.getText(), pageable);
 		}
 		return spotList;
+	}
+
+	// 테마별 관광지 조회하기 - 한가지 테마일때
+	@Transactional(readOnly = true)
+	public Page<Spot> findByTheme(String theme, Pageable pageable) {
+		return spotRepository.findByThemeContaining(theme, pageable);
+	}
+	
+	// 테마별 관광지 조회하기 - 두가지 테마일때
+	@Transactional(readOnly = true)
+	public Page<Spot> findByTwoTheme(String theme1, String theme2, Pageable pageable) {
+		return spotRepository.findByTwoTheme(theme1, theme2, pageable);
 	}
 }

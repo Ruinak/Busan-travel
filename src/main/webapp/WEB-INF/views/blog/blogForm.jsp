@@ -34,6 +34,9 @@
 			<button type="button" class="btn btn-info" onclick="history.back()">목록으로</button>
 		</div>
 	</div>
+<!-- footer start-->
+<%@ include file="../layout/footer.jsp"%>
+<!-- footer end -->
 <script>
 	$('.summernote').summernote({
 		tabsize : 2,

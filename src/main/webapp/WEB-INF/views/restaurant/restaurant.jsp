@@ -36,6 +36,23 @@
 <body>
 	<div class="container">
 		<h3 style="text-align: center">인기 맛집</h3><hr>
+		<!-- 검색 창 -->
+		<div style="margin: 1rem" class="float-center">
+			<form class="form-inline" action="" id="saerchForm">
+				<div class="form-group" style="float:left; width:10%">
+					<label for="sel1"></label> 
+					<select class="form-control" id="sel1">
+						<option>검색</option>
+						<option>가게이름</option>
+						<option>제목+내용</option>
+					</select>
+				</div>
+				<input class="form-control mr-sm-2" type="text" placeholder="Search" id="search" name="" 
+					style="float:center; width:75%; margin-left: 3%;">
+				<button class="btn btn-success" type="submit"
+					onclick="onSearch(event)" style="float:right; width:10%;">검색</button>
+			</form>
+		</div>
 		<!-- Image Card -->
 		<div class="row center-align">
 			<c:forEach var="restaurant" items="${restaurants.content}">
@@ -91,5 +108,27 @@
 			</c:choose>
 		</ul>
 	</div>
+<!-- footer start-->
+<%@ include file="../layout/footer.jsp"%>
+<!-- footer end -->
+<script>
+function onSearch(event) {
+	event.preventDefault()
+	let gubun = $("#sel1 option:selected").val() //sel 값을 받아옴
+	console.log(gubun)
+	if (gubun == "검색") {
+		alert("검색 구분자를 선택하세요!")
+		return false;
+	}
+	let text = $("#search").val()
+	if (text == "") {
+		alert("검색어를 입력 하세요");
+		$("#search").focus();
+		return false;
+	}
+	window.location = "/restaurant/search" + "?page=0&gubun=" + gubun
+			+ "&text=" + text;
+}
+</script>
 </body>
 </html>

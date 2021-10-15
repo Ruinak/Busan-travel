@@ -19,8 +19,7 @@
 		<h1>공지사항 쓰기</h1> <br>
 		<form>
 			<div class="form-group">
-				<input type="text"
-					class="form-control" placeholder="Enter title" id="title">
+				<input type="text" class="form-control" placeholder="Enter title" id="title">
 			</div>
 			<hr>
 			<div class="form-group">
@@ -33,13 +32,16 @@
 			<button type="button" class="btn btn-info" onclick="history.back()">이전</button>
 		</div>
 	</div>
-	<script>
-		$('.summernote').summernote({
-			tabsize : 2,
-			height : 300,
-			placeholder: 'Enter Content'
-		});
-	</script>
-	<script src="/js/notice.js"></script>
+<!-- footer start-->
+<%@ include file="../layout/footer.jsp"%>
+<!-- footer end -->
+<script>
+	$('.summernote').summernote({
+		tabsize : 2,
+		height : 300,
+		placeholder: 'Enter Content'
+	});
+</script>
+<script src="/js/notice.js"></script>
 </body>
 </html>
