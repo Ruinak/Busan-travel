@@ -16,6 +16,9 @@
 <title>Respect Your Busan!</title>
 <!-- Bootstrap -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- 파비콘 -->
+<link rel="shortcut icon" href="ico/boogi.ico" type="image/x-icon">
+<link rel="icon" href="ico/boogi.ico" type="image/x-icon">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap');
 .container, nav { 

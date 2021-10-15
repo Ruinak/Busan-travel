@@ -106,16 +106,16 @@
 		<h4>상세정보</h4> <hr>
 		<p>${ spot.detail }</p> 
 		<div id="btn1">
-			<button>#${ tagspot.tag1 }</button>
-			<button>#${ tagspot.tag2 }</button>
-			<button>#${ tagspot.tag3 }</button>
-			<button>#${ tagspot.tag4 }</button>
-			<button>#${ tagspot.tag5 }</button>
-			<button>#${ tagspot.tag6 }</button>
-			<button>#${ tagspot.tag7 }</button>
-			<button>#${ tagspot.tag8 }</button>
-			<button>#${ tagspot.tag9 }</button>
-			<button>#${ tagspot.tag10 }</button>
+			<button onclick="location.href='/busan/search?page=0&gubun=해시태그&text=${tagspot.tag1}'">#${ tagspot.tag1 }</button>
+			<button onclick="location.href='/busan/search?page=0&gubun=해시태그&text=${tagspot.tag2}'">#${ tagspot.tag2 }</button>
+			<button onclick="location.href='/busan/search?page=0&gubun=해시태그&text=${tagspot.tag3}'">#${ tagspot.tag3 }</button>
+			<button onclick="location.href='/busan/search?page=0&gubun=해시태그&text=${tagspot.tag4}'">#${ tagspot.tag4 }</button>
+			<button onclick="location.href='/busan/search?page=0&gubun=해시태그&text=${tagspot.tag5}'">#${ tagspot.tag5 }</button>
+			<button onclick="location.href='/busan/search?page=0&gubun=해시태그&text=${tagspot.tag6}'">#${ tagspot.tag6 }</button>
+			<button onclick="location.href='/busan/search?page=0&gubun=해시태그&text=${tagspot.tag7}'">#${ tagspot.tag7 }</button>
+			<button onclick="location.href='/busan/search?page=0&gubun=해시태그&text=${tagspot.tag8}'">#${ tagspot.tag8 }</button>
+			<button onclick="location.href='/busan/search?page=0&gubun=해시태그&text=${tagspot.tag9}'">#${ tagspot.tag9 }</button>
+			<button onclick="location.href='/busan/search?page=0&gubun=해시태그&text=${tagspot.tag10}'">#${ tagspot.tag10 }</button>
 		</div>
 		<hr>
 		<div id="flex">		
