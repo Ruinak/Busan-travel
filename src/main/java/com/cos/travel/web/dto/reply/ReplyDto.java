@@ -10,5 +10,6 @@ import lombok.NoArgsConstructor;
 public class ReplyDto {
 	private int userId;
 	private int blogId;
+	private int replyId;
 	private String content;
 }

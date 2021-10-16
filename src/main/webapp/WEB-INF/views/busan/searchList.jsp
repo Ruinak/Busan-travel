@@ -5,23 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>검색 결과</title>
-<style>
-h6 {
-	color: blue;
-}
-.card:hover {
-	color: silver;
-	cursor: pointer;
-}
-img {
-	width: 300px;
-	height: 180px;
-}
-#sel1, input, button {
-	font-family: 'Nanum Gothic', sans-serif;
-}
-</style>
+<title>관광지 검색 목록</title>
+<!-- CSS 적용 -->
+<link rel="stylesheet" href="/css/searchList.css">
 </head>
 <body>
 	<div class="container">
@@ -35,6 +21,7 @@ img {
 						<option>검색</option>
 						<option>관광지명</option>
 						<option>제목+내용</option>
+						<option>해시태그</option>
 					</select>
 				</div>
 				<input class="form-control mr-sm-2" type="text" placeholder="Search" id="search" name="" 

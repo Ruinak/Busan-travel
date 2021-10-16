@@ -23,6 +23,9 @@ public class Restaurant {
 	private String restaurant;
 	
 	@Column(nullable = false)
+	private String tag;
+	
+	@Column(nullable = false)
 	private String town;
 	
 	@Column(nullable = false)

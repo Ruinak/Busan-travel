@@ -19,22 +19,9 @@
 <!-- 파비콘 -->
 <link rel="shortcut icon" href="ico/boogi.ico" type="image/x-icon">
 <link rel="icon" href="ico/boogi.ico" type="image/x-icon">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap');
-.container, nav { 
-	font-family: 'Nanum Gothic', sans-serif;
-}
-.nav-link { 
-	font-size: 24px;
-	width: 200px;
-	text-align:center;
-}
-#home{
-	font-size: 24px;
-	width: 250px;
-	margin-left: 100px;
-}
-</style>
+<!-- CSS 적용 -->
+<link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="/css/footer.css">
 </head>
 <body>
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -107,8 +94,7 @@
 				</c:otherwise>
 			</c:choose>
 		</div>
-	</nav>
-	<br>
+	</nav> <br>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

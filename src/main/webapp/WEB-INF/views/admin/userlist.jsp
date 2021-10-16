@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>User_Login</title>
+</head>
+<body>
 <div class="container">
 	<h1>회원 관리</h1><br>
 	<div>
@@ -121,3 +128,5 @@
 		/* window.location="/admin/searchUsername/"+text+"?page=0" */
 	}
 </script>
+</body>
+</html>

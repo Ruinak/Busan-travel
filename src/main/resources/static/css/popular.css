@@ -1,0 +1,25 @@
+#text {
+	font-size: 22px;
+	font-weight: 700;
+	text-align: center;
+}
+a {
+	color: black;
+	text-decoration: none;
+}
+img {
+	width: 417px;
+	height: 320px;
+}
+hr {
+	border : solid 1px;
+}
+.nav-link1 { 
+	font-size: 20px;
+	width: auto;
+	text-align:center;
+	color: black;
+}
+#sel1, input, button {
+	font-family: 'Nanum Gothic', sans-serif;
+}

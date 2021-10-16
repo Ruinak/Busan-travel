@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>여행이야기 수정화면</title>
+<!-- CSS 적용 -->
+<link rel="stylesheet" href="/css/blog.css">
+</head>
+<body>
 <div class="container">
 	<h1>공지사항</h1> <br>
 	<div class="form-group">
@@ -56,3 +65,5 @@
 	});
 </script>
 <script src="/js/blog.js"></script>
+</body>
+</html>

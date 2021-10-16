@@ -65,6 +65,7 @@ public class SpotController {
 		model.addAttribute("searchDto", dto);
 		return "busan/searchList";
 	}
+	
 	// 테마별 관광지 조회하기
 	@GetMapping("/busan/popular/{theme}")
 	public String theme(Model model, 

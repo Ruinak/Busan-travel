@@ -5,33 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>인기 관광지</title>
-<!-- Bootstrap -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<title>인기 맛집 목록</title>
 <!-- Materialize -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<style type="text/css">
-	#text {
-		font-size: 22px;
-		font-weight: 700;
-		center-align;
-	}
-	a {
-		color: black;
-		text-decoration: none;
-	}
-	img {
-		width: 417px;
-		height: 320px;
-	}
-	hr {
-		border : solid 1px;
-	}
-</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<!-- CSS 적용 -->
+<link rel="stylesheet" href="/css/restaurant.css">
 </head>
 <body>
 	<div class="container">
@@ -45,6 +24,7 @@
 						<option>검색</option>
 						<option>가게이름</option>
 						<option>제목+내용</option>
+						<option>해시태그</option>
 					</select>
 				</div>
 				<input class="form-control mr-sm-2" type="text" placeholder="Search" id="search" name="" 

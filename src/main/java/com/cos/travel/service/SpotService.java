@@ -43,14 +43,14 @@ public class SpotService {
 	public Page<Spot> searchByText(SearchDto dto, Pageable pageable) {
 		Page<Spot> spotList = null;
 		switch (dto.getGubun()) {
-		case "관광지명":
-			spotList = spotRepository.findBySightContaining(dto.getText(), pageable);
-			break;
-		case "제목 내용":
-			spotList = spotRepository.findByText(dto.getText(), pageable);
-			break;
-		case "해시태그":
-			spotList = spotRepository.findByTagContaining(dto.getText(), pageable);
+			case "관광지명":
+				spotList = spotRepository.findBySightContaining(dto.getText(), pageable);
+				break;
+			case "제목 내용":
+				spotList = spotRepository.findByText(dto.getText(), pageable);
+				break;
+			case "해시태그":
+				spotList = spotRepository.findByTagContaining(dto.getText(), pageable);
 		}
 		return spotList;
 	}

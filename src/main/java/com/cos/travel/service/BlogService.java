@@ -1,5 +1,7 @@
 package com.cos.travel.service;
 
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -10,6 +12,7 @@ import com.cos.travel.model.User;
 import com.cos.travel.repository.BlogRepository;
 import com.cos.travel.repository.ReplyRepository;
 import com.cos.travel.web.dto.reply.ReplyDto;
+import com.cos.travel.web.dto.search.SearchDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -25,6 +28,7 @@ public class BlogService {
 	public void insert(Blog blog, User user) {
 		blog.setCount(0);
 		blog.setUser(user);
+		blog.setWriter(user.getUsername());
 		blogRepository.save(blog);
 	}
 
@@ -67,11 +71,12 @@ public class BlogService {
 
 	// 댓글 쓰기
 	@Transactional
-	public void replyInsert(ReplyDto replyDto) {
+	public void replyInsert(ReplyDto replyDto/* , Reply reply */) {
 
-		/* 영속화 첫번째 개념
-		 * User user = userRepository.findById(replyDto.getUserId()).orElseThrow(() -> {
-		 * return new IllegalArgumentException("댓글 실패 : 유저 아이디 못찾음"); }); // 영속화
+		/*
+		 * 영속화 첫번째 개념 User user =
+		 * userRepository.findById(replyDto.getUserId()).orElseThrow(() -> { return new
+		 * IllegalArgumentException("댓글 실패 : 유저 아이디 못찾음"); }); // 영속화
 		 * 
 		 * Blog blog = blogRepository.findById(replyDto.getBlogId()).orElseThrow(() -> {
 		 * return new IllegalArgumentException("댓글 실패 : 블로그 아이디 못찾음"); });
@@ -83,13 +88,56 @@ public class BlogService {
 		 * Reply reply =
 		 * Reply.builder().user(user).blog(blog).content(replyDto.getContent()).build();
 		 */
-		
+//		Optional<Blog> b = blogRepository.findById(reply.getBlog().getId());
+//		b.get().setReplyCount(b.get().getReplyCount()+1);
+
 		replyRepository.mSave(replyDto.getUserId(), replyDto.getBlogId(), replyDto.getContent());
+
+		int blogId = replyDto.getBlogId();
+		Optional<Blog> blog = blogRepository.findById(blogId);
+		if (blog.isPresent()) {
+			blog.get().setReplyCount(blog.get().getReplyCount() + 1);
+			blogRepository.save(blog.get());
+		}
 	}
-	
+
 	// 댓글 삭제
 	@Transactional
-	public void deleteReply(int replyId) {
-		replyRepository.deleteById(replyId);
+	public void deleteReply(ReplyDto replyDto) {
+		replyRepository.deleteById(replyDto.getReplyId());
+		int blogId = replyDto.getBlogId();
+		Optional<Blog> blog = blogRepository.findById(blogId);
+		if (blog.isPresent()) {
+			blog.get().setReplyCount(blog.get().getReplyCount() - 1);
+			blogRepository.save(blog.get());
+		}
+	}
+
+	// 검색
+	@Transactional(readOnly = true)
+	public Page<Blog> searchByText(SearchDto dto, Pageable pageable) {
+
+		Page<Blog> blogList = null;
+
+		System.out.println("pageable.getOffset()=" + pageable.getOffset());
+		System.out.println("pageable.getPageSize()=" + pageable.getPageSize());
+		System.out.println("pageable.getPageNumber()=" + pageable.getPageNumber());
+		
+		switch (dto.getGubun()) {
+		/*
+		 * case "전체": System.out.println("======================="); userlist =
+		 * boardRepository.findByText(dto.getText(), pageable); break;
+		 */
+		case "작성일":
+			blogList = blogRepository.searchByDate(dto.getText(), pageable);
+			break;
+		case "제목 내용":
+			blogList = blogRepository.findByText(dto.getText(), pageable);
+			break;
+		case "아이디":
+			blogList = blogRepository.searchByName(dto.getText(), pageable);
+			break;
+		}
+		return blogList;
 	}
 }

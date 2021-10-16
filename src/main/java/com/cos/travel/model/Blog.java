@@ -13,9 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
 import javax.persistence.PrePersist;
-import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -34,26 +32,32 @@ public class Blog {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String title;
 	@Lob
 	private String content;
-	private int count; //조회수
-	
-	@Transient
+	private int count; // 조회수
+	private String writer;
+
+	private int replyCount;
+
 	private int likeCount;
-	
-	@JoinColumn(name="userId")
+
+	@JoinColumn(name = "userId")
 	@ManyToOne(fetch = FetchType.EAGER)
 	private User user;
-	
-	@OneToMany(mappedBy="blog", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties({"blog"})
-	@OrderBy("createDate desc")
+
+	@OneToMany(mappedBy = "blog", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties({ "blog" })
+	//@OrderBy("createDate desc")
 	private List<Reply> replies;
-	
+
+	@JsonIgnoreProperties({ "blog" })
+	@OneToMany(mappedBy = "blog", cascade = CascadeType.REMOVE)
+	private List<Likes> likes;
+
 	private LocalDateTime createDate;
-	
+
 	@PrePersist
 	public void createDate() {
 		this.createDate = LocalDateTime.now();

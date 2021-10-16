@@ -1,0 +1,9 @@
+h1 {
+	text-align: center;
+}
+#card {
+	border: solid black 1px;
+}
+#container {
+	width: 50%;
+}

@@ -5,27 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-.container {
-	width: 30%;
-	margin: auto;
-	font-size: 22px;
-}
-#btn {
-	font-size: 24px;
-}
-#title {
-	text-align: center;
-}
-.form-check-inline {
-	margin: 5px;
-}
-</style>
+<title>사용자 회원가입</title>
+<link rel="stylesheet" href="/css/user.css">
 </head>
 <body>
 	<form class="join_action" action="/join" method="post" id="myForm"> <br>
-		<div class="container">
+		<div id="container" class="container">
 			<h1 id="title">회원 가입</h1>
 			<div class="form-group">
 				<label for="username">아이디:</label> <input type="text"

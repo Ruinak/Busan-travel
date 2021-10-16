@@ -5,92 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>인기 관광지</title>
-<!-- Bootstrap -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<title>인기 관광지 상세보기</title>
 <!-- Materialize -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<style type="text/css">
-	img {
-		width: 700px;
-		height: 500px;
-	}
-	#word {
-		width: 500px;
-		height: 500px;
-	}
-	#hr {
-		border : solid 1px;
-		width : 50%
-	}
-	hr {
-		border : solid 1px;
-	}
-	p {
-		font-size: 24px;
-		margin: 20px;
-		line-height: 1.5;
-	}
-	li {
-		font-size : 22px;
-		padding: 10px;
-	}
-	#title {
-		text-align: center;
-	}
-	ul {
-		width: 50%;
-		padding: 0px;
-		margin: 1px; 
-	}
-	#flex {
-		display: flex;
-	}
-	#btn1{ 
-		margin: 20px;
-		font-family: 'Nanum Gothic', sans-serif;
-	}	
-	#btnComment{
-		width : 200px;
-		height : 60px;
-		font-size: 24px;3
-		background-color: highlight;
-		font-family: 'Nanum Gothic', sans-serif;
-	}
-	#btn2{
-		width : 200px;
-		height : 60px;
-		font-size: 24px;
-		background-color: black;
-		font-family: 'Nanum Gothic', sans-serif;
-	}
-	button {
-		color: gray;
-		border: solid 2px;
-		border-color: gray;
-		background-color: white;
-		padding: 10px 20px 10px 20px;
-		border-radius: 5px;
-		font-size: 18px;
-	}
-	button:hover {
-		color: fuchsia;
-		border-color: fuchsia;
-	}
-	th {
-		font-size: 20px;
-		text-align: center;
-	}
-	td {
-		font-size: 22px;
-		padding-left: 10px;
-		margin: auto;
-		padding: auto;
-	}
-</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<!-- CSS 적용 -->
+<link rel="stylesheet" href="/css/popularDetail.css">
 </head>
 <body>
 <div class="container">

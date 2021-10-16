@@ -1,7 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
-<div class="container">
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>여행이야기 상세보기</title>
+<!-- CSS 적용 -->
+<link rel="stylesheet" href="/css/blog.css">
+</head>
+<body>
+<div id="container" class="container">
 	<h1>나만의 여행 이야기</h1> <br>
 	<div class="form-group">
 		<label for="id">글 번호:</label> <input type="text" name="id"
@@ -24,8 +33,8 @@
 	</div> <hr>
 	<div class="card">
 		<form>
-			<input type="hidden" id="userId" value="${principal.user.id}" /> <input
-				type="hidden" id="blogId" value="${blog.id}" />
+			<input type="hidden" id="userId" value="${principal.user.id}" /> 
+			<input type="hidden" id="blogId" value="${blog.id}" />
 			<div class="card-body">
 				<textarea id="reply-content" class="form-control" rows="1"></textarea>
 			</div>
@@ -34,12 +43,12 @@
 			</div>
 		</form>
 	</div> <br>
+	
 	<div class="card">
 		<div class="card-header">댓글</div>
 		<ul id="reply--box" class="list-group">
 			<c:forEach var="reply" items="${blog.replies}">
-				<li id="reply--${reply.id}"
-					class="list-group-item d-flex justify-content-between">
+				<li id="reply--${reply.id}" class="list-group-item d-flex justify-content-between">
 					<div>
 						${reply.content} <span class="text-primary">(<javatime:format
 								value="${reply.createDate}" pattern="yyyy.MM.dd HH:mm" />)
@@ -48,7 +57,7 @@
 					<div class="d-flex">
 						<div class="font-weight-bold">작성자: ${reply.user.username }
 							&nbsp;</div>
-						<c:if test="${reply.user.id == principal.user.id }">
+						<c:if test="${reply.user.id == principal.user.id}">
 							<button onClick="index.replyDelete(${blog.id}, ${reply.id})"
 								class="btn btn-danger btn-sm badge" style="font-size: 13px">삭제</button>
 						</c:if>
@@ -57,22 +66,119 @@
 			</c:forEach>
 		</ul>
 	</div> <br>
+	
 	<div class="float-right">
 		<c:choose>
-			<c:when test="${principal.user.id == blog.user.id}">
+			<c:when test="${principal.user.id == reply.user.id}">
 				<button class="btn btn-primary"
 					onclick="location.href='/blog/blogUpdate/${blog.id}'">수정</button>
 				<button type="button" class="btn btn-primary"
-					onclick="location.href='/blog/blogMain'">목록으로</button>
+					onclick="location.href='/blog/blogMain'">블로그로 이동</button>
+				<span id="likebtn">🧡</span>
+			</c:when>
+			<c:when test="${principal.user.role == 'ROLE_ADMIN'}">
+				<button type="button" id="btnDelete" class="btn btn-danger">삭제</button>
+				<button type="button" class="btn btn-primary"
+					onclick="location.href='/blog/blogMain'">블로그로 이동</button>
+				<span id="likebtn">🧡</span>
 			</c:when>
 			<c:otherwise>
 				<button type="button" class="btn btn-primary"
-					onclick="location.href='/blog/blogMain'">목록으로</button>
+					onclick="location.href='/blog/blogMain'">블로그로 이동</button>
+				<span id="likebtn">🧡</span>
 			</c:otherwise>
 		</c:choose>
 	</div>
 </div> <br> <br>
-<!-- footer start-->
-<%@ include file="../layout/footer.jsp"%>
-<!-- footer end -->
 <script src="/js/blog.js"></script>
+<script>
+let isliked = false;
+$("#likebtn").click(function(){
+	if (isliked == true){
+		deletelike();
+	} else {
+		addlike();
+	}
+})  //btnDelete
+$(document).ready(function(){
+	checkheart();
+});
+function checkheart(){
+	$.ajax({
+		type :"get",
+		url : "/api/blog/${blog.id}/likes",
+		success:function(resp){
+			console.log(resp);
+			if(resp.message=="no"){
+				//alert("좋아요를 할 수 있어요!");
+				$("#likebtn").html("🤍")
+				isliked = false;
+			} else {
+				$("#likebtn").html("🧡")
+				isliked = true;
+			}
+		}, //success
+		error:function(error){
+			console.log(error)
+			alert("error")
+		}		
+	})//ajax
+}
+function addlike(){
+	$.ajax({
+		type :"post",
+		url : "/api/blog/${blog.id}/likes",
+		success:function(resp){
+			console.log(resp);
+			if(resp.message=="success"){
+				//alert("좋아요 성공");
+				checkheart();
+			} else {
+				alert("좋아요 실패");
+			}
+		}, //success
+		error:function(error){
+			console.log(error)
+			alert("error")
+		}		
+	})//ajax
+}
+function deletelike(){
+	$.ajax({
+		type :"delete",
+		url : "/api/blog/${blog.id}/likes",
+		success:function(resp){
+			console.log(resp);
+			if(resp.message=="success"){
+				//alert("좋아요 성공");
+				checkheart();
+			} else {
+				alert("좋아요 실패");
+			}
+		}, //success
+		error:function(error){
+			console.log(error)
+			alert("error")
+		}		
+	})//ajax
+}
+</script>
+<script>
+	$("#btnDelete").click(function() {
+		if (!confirm("정말 삭제할까요?"))
+			return false
+		$.ajax({
+			type : "DELETE",
+			url : "/blog/blogDetail/"+${blog.id},
+			success : function(resp) {
+				console.log(resp);
+				if (resp == "success") {
+					alert("삭제성공");
+					location.href = "/blog/blogMain"
+				}
+			} //success
+		})//ajax
+	}) //btnDelete
+</script>
+</body>
+</html>

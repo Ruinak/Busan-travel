@@ -17,4 +17,7 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
 			countQuery = "SELECT count(*) FROM restaurant WHERE title LIKE %?1% or detail LIKE %?1%",
 		    nativeQuery = true)
 	Page<Restaurant> findByText(String searchText, Pageable pageable);
+	
+	// 해시태그로 검색하기.
+	Page<Restaurant> findByTagContaining(String tag, Pageable pageable);
 }

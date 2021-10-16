@@ -46,7 +46,7 @@ public class RestaurantController {
 	// 맛집 검색하기.
 	@GetMapping("/restaurant/search")
 	public String searchRestaurant(Model model, @ModelAttribute SearchDto dto, 
-			@PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
+			@PageableDefault(size = 5, sort = "id", direction = Sort.Direction.ASC) Pageable pageable){
 		Page<Restaurant> restaurants = restaurantService.searchByText(dto, pageable);
 		model.addAttribute("restaurants", restaurants);
 		model.addAttribute("searchDto", dto);

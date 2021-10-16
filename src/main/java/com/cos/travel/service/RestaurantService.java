@@ -42,6 +42,8 @@ public class RestaurantService {
 			case "제목 내용":
 				restaurantList = restaurantRepository.findByText(dto.getText(), pageable);
 				break;
+			case "해시태그":
+				restaurantList = restaurantRepository.findByTagContaining(dto.getText(), pageable);
 		}
 		return restaurantList;
 	}

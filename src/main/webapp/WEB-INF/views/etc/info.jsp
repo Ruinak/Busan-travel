@@ -13,19 +13,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<style type="text/css">
-.list-group1 {
-	width: 100%;
-	display: flex;
-}
-.list-group {
-	width: 50%;
-	height: 100%;
-	margin: 10px;
-	text-align: center;
-}
-</style>
+<title>코로나 현황 및 날씨</title>
+<!-- CSS 적용 -->
+<link rel="stylesheet" href="/css/info.css">
 </head>
 <body>
 	<%!LocalDate now = LocalDate.now();
