@@ -37,7 +37,7 @@
 					<a class="nav-link" href="/" id="home" >Respect Your Busan</a></li>
 					<li class="nav-item"><a class="nav-link" href="/login" id="login" >로그인</a></li>
 					<li class="nav-item"><a class="nav-link" href="/join" id="join">회원가입</a></li>
-					<li class="nav-item"><a class="nav-link" href="/board/boardMain" id="notice">공지사항</a></li>
+					<li class="nav-item"><a class="nav-link" href="/board/boardMain" id="notice">QnA</a></li>
 				</ul>
 			</sec:authorize>
 			<c:choose>
@@ -82,7 +82,7 @@
 								<a class="nav-link" href="/etc/info" id="corona" >With Corona</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="/board/boardMain" id="notice">공지사항</a>
+								<a class="nav-link" href="/board/boardMain" id="notice">QnA</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="/logout">로그아웃(<sec:authentication

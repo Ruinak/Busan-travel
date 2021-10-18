@@ -21,19 +21,18 @@
 		<h1>공지사항 쓰기</h1> <br>
 		<form>
 			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Enter title" id="title">
+				<input type="text" class="form-control" placeholder="제목을 입력해주세요" id="title">
 			</div>
 			<hr>
 			<div class="form-group">
 				<textarea class="form-control summernote" rows="5" id="content"></textarea>
 			</div>
-		</form> <hr>
-		<p style="font-size:12px; color:red;">※사진 첨부시 사진을 클릭하여 사이즈를 50%이하로 줄여 주세요! </p>
+		</form> <hr> <br>
 		<div class="float-right">
 			<button id="btn-save" class="btn btn-info">글쓰기</button>
 			<button type="button" class="btn btn-info" onclick="history.back()">이전</button>
 		</div>
-	</div>
+	</div> <br> <br> <br>
 <!-- footer start-->
 <%@ include file="../layout/footer.jsp"%>
 <!-- footer end -->
@@ -41,7 +40,7 @@
 	$('.summernote').summernote({
 		tabsize : 2,
 		height : 300,
-		placeholder: 'Enter Content'
+		placeholder: '내용을 입력해주세요'
 	});
 </script>
 <script src="/js/notice.js"></script>

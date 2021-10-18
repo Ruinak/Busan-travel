@@ -5,16 +5,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>여행이야기 목록</title>
+<title>나의 부산 이야기 목록</title>
 <!-- CSS 적용 -->
-<link rel="stylesheet" href="/css/blog.css">
+<link rel="stylesheet" href="/css/blogMain.css">
 </head>
 <body>
 <div class="container">
-	<h1>나만의 여행 이야기</h1> <br>
-	<div style="margin: 1rem" class="float-right">
+	<h1>나의 부산 이야기</h1> <hr id="hr"><br> <br>
+	<!-- <div style="margin: 1rem" class="float-right">
 		<form class="form-inline" action="" id="saerchForm">
-			<span class="m-3"><a href="/blog/blogForm" class="btn btn-success">블로그 쓰기</a></span> <br>
+			<span class="m-3"><a href="/blog/blogWrite" class="btn btn-success">블로그 쓰기</a></span> <br>
 			<div class="form-group">
 				<label for="sel1"></label> 
 				<select class="form-control" id="sel1">
@@ -27,28 +27,34 @@
 			<input class="form-control mr-sm-2" type="text" placeholder="Search" id="search" name="">
 			<button class="btn btn-success" type="submit" onclick="onSearch(event)">Search</button>
 		</form>
-	</div>
-
-	<div class="clearfix"></div> 
+	</div> -->
 	
 	<div>
 		<c:forEach var="item" items="${lists.content }">
-			<div id="card" class="card m-2" style="text-align: center;" display="inline-block; ">
-				<div class="card-body" >
-				<span>${item.id}</span> /
-					<javatime:format value="${item.createDate}" pattern="yyyy.MM.dd" />
-					/ <span style="font-size: 20px;">${item.user.username}</span> / <span>⬆조회수(${item.count })</span>
-					 / <span>⬆댓글수(${item.replyCount })</span> / <span>좋아요(${item.likeCount})</span> <hr>
-					<h4 class="card-title" id="h1" style="color: #1E90FF;">${item.title}</h4> <hr>
-					<p>${item.content}</p> <hr>
-					<a href="/blog/blogDetail/${item.id}" class="btn btn-primary float-right">상세 보기</a>
+			<div id="card" class="card m-2" style="text-align: center;" onClick="location.href='/blog/blogDetail/${item.id}'">
+				<div id="flex">
+					<ul id="ul">
+						<li id="view">
+							${item.content}
+						</li>
+					</ul>
+					<ul>
+						<li>
+							<h3>${item.title}</h3> 
+							<p>글작성자 : ${item.id}</p> 
+							<p><javatime:format value="${item.createDate}" pattern="yyyy.MM.dd" />
+							 / ${item.user.username} / 조회수 ${item.count }
+							 / 댓글수 ${item.replyCount } / 좋아요 ${item.likeCount}</p> 
+						</li>
+					</ul>
 				</div>
 			</div>
 		</c:forEach>
 	</div>
-	
-	<div class="clearfix"></div> <br>
-	
+	<div>
+		<button id="btn" class="btn btn-dark"
+			onclick="location='/blog/blogWrite'">이야기 쓰기</button>
+	</div> <br> <br> <br>
 	<div>
 		<ul class="pagination justify-content-center">
 			<c:choose>
@@ -85,7 +91,7 @@
 			</c:choose>
 		</ul>
 	</div>
-</div>
+</div> <br>
 <!-- footer start-->
 <%@ include file="../layout/footer.jsp"%>
 <!-- footer end -->

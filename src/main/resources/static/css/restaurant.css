@@ -11,6 +11,11 @@ img {
 	width: 417px;
 	height: 320px;
 }
-hr {
+#hr {
 	border : solid 1px;
+	width : 50%;
+	margin: auto;
+}
+#sel1, input, button {
+	font-family: 'Nanum Gothic', sans-serif;
 }

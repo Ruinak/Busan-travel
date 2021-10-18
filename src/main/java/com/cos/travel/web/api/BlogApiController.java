@@ -31,7 +31,7 @@ public class BlogApiController {
 	private final LikesService likesService;
 
 	// 블로그 쓰기
-	@PostMapping("blog/blogForm")
+	@PostMapping("blog/blogWrite")
 	public ResponseEntity<?> save(@RequestBody Blog blog, @AuthenticationPrincipal PrincipalDetails principal) {
 		blogService.insert(blog, principal.getUser());
 		return new ResponseEntity<>(new CMRespDto<>(1, "Success", null), HttpStatus.OK);

@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div class="container">
-		<h3 style="text-align: center">추천 관광지</h3>
+		<h3 style="text-align: center">추천 관광지</h3> <hr id="hr"> <br>
 		<div class="row center-align">
 			<c:forEach var="spot" items="${spots.content}">
 				<div class="col-md-4">
@@ -68,7 +68,7 @@
 				</c:otherwise>
 			</c:choose>
 		</ul>
-	</div>
+	</div> <br>
 <!-- footer start-->
 <%@ include file="../layout/footer.jsp"%>
 <!-- footer end -->

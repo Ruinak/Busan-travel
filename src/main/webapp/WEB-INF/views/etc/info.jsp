@@ -13,7 +13,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>코로나 현황 및 날씨</title>
+<title>사회적 거리두기 및 날씨</title>
 <!-- CSS 적용 -->
 <link rel="stylesheet" href="/css/info.css">
 </head>
@@ -21,11 +21,11 @@
 	<%!LocalDate now = LocalDate.now();
 	int month = now.getMonthValue();
 	int day = now.getDayOfMonth();
-	DayOfWeek dayofWeek = now.getDayOfWeek();
-	String dayName = dayofWeek.getDisplayName(TextStyle.FULL, Locale.KOREAN);%>
+	DayOfWeek dayOfWeek = now.getDayOfWeek();
+	String dayName = dayOfWeek.getDisplayName(TextStyle.FULL, Locale.KOREAN);%>
 	<div class="container">
-		<h2> 부산 코로나 현황 (<%=month%>월 <%=day%>일 <%=dayName%> 집계 기준) </h2> <br>
-		<div class="list-group1">
+		<h1> 부산 거리두기 단계 (<%=month%>월 <%=day%>일 <%=dayName%> 기준) </h1> <hr id="hr"> <br> <br>
+		<%-- <div class="list-group-box">
 			<ul class="list-group">
 				<li class="list-group-item"> 부산시 누적 확진자 수 </li>
 				<li class="list-group-item"> 확진자 수 <span id="confirmed" style="color:red;"></span>명</li>
@@ -43,12 +43,12 @@
 						누적 <span id="2nd2" style="color:red;"></span>명
 				</li>
 				<li class="list-group-item" style="color:white;">-</li>
-			</ul>
-		</div> <br>
+			</ul> 
+		</div> <br> --%>
 		<div style="text-align:center;">
-			<img src="images/images1.png" style="width:100%; height:100%; object-fit: cover;">
+			<img src="images/distancing.jpg" style="width:100%; height:100%; object-fit: cover;">
 		</div> <br> <br>
-		<h2>부산 날씨</h2> <br>
+		<h1>부산 주간 날씨</h1> <hr id="hr"> <br>
 		<table class="table table-hover" style="text-align: center">
 			<thead class="thead-light " style="font-wiehgt: bold;">
 				<tr>

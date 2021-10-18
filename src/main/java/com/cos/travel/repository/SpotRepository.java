@@ -2,12 +2,14 @@ package com.cos.travel.repository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.cos.travel.model.Spot;
 
-public interface SpotRepository extends JpaRepository<Spot, Integer> {
+public interface SpotRepository extends PagingAndSortingRepository<Spot, Integer>, 
+										JpaSpecificationExecutor<Spot> {
 	
 	// 맞춤 관광지 추천 쿼리
 	@Query(value="select * from spot where spot.theme REGEXP ?1", nativeQuery = true)

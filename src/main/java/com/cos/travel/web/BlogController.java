@@ -35,10 +35,10 @@ public class BlogController {
 		return "blog/blogMain";
 	}
 
-	// 블로그 쓰기
-	@GetMapping("/blog/blogForm")
-	public String blogForm() {
-		return "blog/blogForm";
+	// 블로그 쓰기 화면으로 이동
+	@GetMapping("/blog/blogWrite")
+	public String blogWrite() {
+		return "blog/blogWrite";
 	}
 	
 	// 블로그 상세 보기
@@ -74,7 +74,7 @@ public class BlogController {
 		return "blog/blogupdateForm";
 	}
 	
-	// 공지사항 삭제
+	// 블로그 삭제
 	@DeleteMapping("/blog/blogUpdate/{id}")
 	@ResponseBody
 	public String delete(@PathVariable int id) {

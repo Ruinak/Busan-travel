@@ -1,12 +1,22 @@
 package com.cos.travel.service;
 
+import java.util.Map;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cos.travel.model.Spot;
 import com.cos.travel.repository.SpotRepository;
+import com.cos.travel.util.GetSort;
 import com.cos.travel.web.dto.search.SearchDto;
 
 import lombok.RequiredArgsConstructor;
@@ -16,6 +26,37 @@ import lombok.RequiredArgsConstructor;
 public class SpotService {
 
 	private final SpotRepository spotRepository;
+	
+	// jpa specification 으로 검색 구현하기.
+	// 단일 조건의 조회 Spec을 리턴.
+	public Specification<Spot> getSingleSpec(Map<String, Object> map) {
+		return new Specification<Spot>() {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public Predicate toPredicate(Root<Spot> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+				Predicate p = cb.conjunction();
+				if (map.get("sight") != null)
+					p = cb.and(cb.like(root.get("sight"), "%" + (String) map.get("sight") + "%"));
+				if (map.get("detail") != null)
+					p = cb.and(cb.like(root.get("detail"), "%" + (String) map.get("detail") + "%"));
+				if (map.get("tag") != null)
+					p = cb.and(cb.like(root.get("tag"), "%" + (String) map.get("tag") + "%"));
+				return p;
+			}
+		};
+	}
+
+	// getSingleSpec() 호출하기
+	@Transactional
+	public Page<Spot> getGridList(Map<String, Object> map) throws Exception {
+		int firstIdx = (int) map.get("pageIndex");
+		int lastIdx = (int) map.get("recordCountPerPage");
+		Pageable paging = PageRequest.of(firstIdx, lastIdx,
+				GetSort.getSort((String) map.get("sortColumn"), (String) map.get("sortOrder")));
+		Specification<Spot> spec = getSingleSpec(map);
+		return spotRepository.findAll(spec, paging);
+	}
 	
 	// 전체 관광지 목록 보기
 	@Transactional(readOnly = true)

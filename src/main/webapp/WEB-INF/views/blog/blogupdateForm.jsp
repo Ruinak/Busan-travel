@@ -36,7 +36,7 @@
 				<button class="btn btn-primary" id="btn-update">수정 완료</button>
 				<button type="button" id="btnDelete" class="btn btn-danger">삭제</button>
 				<button type="button" class="btn btn-primary" onclick="history.back()">이전</button>
-	</div> <br>
+	</div> <br><br><br>
 </div>
 <!-- footer start-->
 <%@ include file="../layout/footer.jsp"%>

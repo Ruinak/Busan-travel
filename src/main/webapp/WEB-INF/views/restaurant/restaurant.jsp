@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div class="container">
-		<h3 style="text-align: center">인기 맛집</h3><hr>
+		<h3 style="text-align: center">인기 맛집</h3> <hr id="hr">
 		<!-- 검색 창 -->
 		<div style="margin: 1rem" class="float-center">
 			<form class="form-inline" action="" id="saerchForm">
@@ -87,7 +87,7 @@
 				</c:otherwise>
 			</c:choose>
 		</ul>
-	</div>
+	</div> <br>
 <!-- footer start-->
 <%@ include file="../layout/footer.jsp"%>
 <!-- footer end -->

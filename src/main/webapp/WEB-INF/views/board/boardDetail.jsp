@@ -31,17 +31,8 @@
 		</div>
 	</div> <br> <br>
 	<div class="float-right">
-		<c:choose>
-			<c:when test="${principal.user.role == 'ROLE_ADMIN'}">
-				<button class="btn btn-primary" onclick="location.href='/board/noticeupdate/${board.id}'">수정</button>
-				<button type="button" class="btn btn-primary"
-					onclick="history.back()">목록으로</button>
-			</c:when>
-			<c:otherwise>
-				<button type="button" class="btn btn-primary"
-					onclick="history.back()">목록으로</button>
-			</c:otherwise>
-		</c:choose>
+		<button type="button" class="btn btn-dark"
+			onclick="history.back()">목록으로</button>
 	</div>
 </div><br><br><br>
 <!-- footer start-->

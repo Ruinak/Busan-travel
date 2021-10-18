@@ -30,9 +30,6 @@ public class UserApiController {
 	@PutMapping("/api/user/{id}")
 	public CMRespDto<?> update(@PathVariable int id, @Valid UserUpdateDto dto, BindingResult bindingResult,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
-
-		System.out.println(dto);
-		
 		if (bindingResult.hasErrors()) {
 			Map<String, String> errorMap = new HashMap<>();
 			for (FieldError error : bindingResult.getFieldErrors()) {

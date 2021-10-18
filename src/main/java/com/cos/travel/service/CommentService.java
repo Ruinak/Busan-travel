@@ -27,4 +27,10 @@ public class CommentService {
 	public List<Comment> list(int num){
 		return commentRepository.findByS_id(num);
 	}
+	
+	// 댓글 갯수
+	@Transactional
+	public int countComment(int num) {
+		return commentRepository.countByS_id(num);
+	}
 }

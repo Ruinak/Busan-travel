@@ -14,30 +14,31 @@
 </head>
 <body>
 	<div class="container">
-		<h3 style="text-align: center">인기 관광지</h3><hr>
-		<!-- 검색 창 -->
+		<h3 style="text-align: center">인기 관광지</h3> <hr id="hr">
+		<!-- 검색 창 시작 -->
 		<div style="margin: 1rem" class="float-center">
 			<form class="form-inline" action="" id="saerchForm">
 				<div class="form-group" style="float:left; width:10%">
 					<label for="sel1"></label> 
-					<select class="form-control" id="sel1">
-						<option>검색</option>
-						<option>관광지명</option>
-						<option>제목+내용</option>
-						<option>해시태그</option>
+					<select class="form-control" id="searchType">
+						<option value="">검색</option>
+						<option value="sight">관광지명</option>
+						<option value="detail">제목+내용</option>
+						<option value="tag">해시태그</option>
 					</select>
 				</div>
-				<input class="form-control mr-sm-2" type="text" placeholder="Search" id="search" name="" 
+				<input class="form-control mr-sm-2" type="text" placeholder="Search" id="searchText" name="" 
 					style="float:center; width:75%; margin-left: 3%;">
 				<button class="btn btn-success" type="submit"
-					onclick="onSearch(event)" style="float:right; width:10%;">검색</button>
+					onclick="onSearch(event);" style="float:right; width:10%;">검색</button>
 			</form>
 		</div>
+		<!-- 검색 창 끝 -->
 		<!-- 테마 분류 -->
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">				
 				<div class="collapse navbar-collapse" id="navbarNav">
-					<ul class="navbar-nav">
+					<ul id="nav" class="navbar-nav">
 						<li class="nav-item"><a class="nav-link1" href="/busan/popular/자연">자연</a></li>
 						<li class="nav-item"><a class="nav-link1" href="/busan/popular/전시체험">전시/체험</a></li>
 						<li class="nav-item"><a class="nav-link1" href="/busan/popular/예술or건축물">예술/건축물</a></li>
@@ -107,27 +108,17 @@
 				</c:otherwise>
 			</c:choose>
 		</ul>
-	</div>
+	</div> <br>
 <!-- footer start-->
 <%@ include file="../layout/footer.jsp"%>
 <!-- footer end -->
 <script>
 function onSearch(event) {
 	event.preventDefault()
-	let gubun = $("#sel1 option:selected").val() //sel 값을 받아옴
-	console.log(gubun)
-	if (gubun == "검색") {
-		alert("검색 구분자를 선택하세요!")
-		return false;
-	}
-	let text = $("#search").val()
-	if (text == "") {
-		alert("검색어를 입력 하세요");
-		$("#search").focus();
-		return false;
-	}
-	window.location = "/busan/search" + "?page=0&gubun=" + gubun
-			+ "&text=" + text;
+	let searchType = $("#searchType option:selected").val()
+	let searchText = $("#searchText").val()
+
+	window.location="/busan/search?"+searchType+"="+searchText+"&page=0";
 }
 </script>
 </body>

@@ -113,7 +113,7 @@
 			<button id="btn" type="button" class="btn btn-dark"
 				onclick="history.back()">뒤로 가기</button>
 		</form>
-	</div> <br> <br>
+	</div> <br> <br> <br> <br>
 <!-- footer start-->
 <%@ include file="../layout/footer.jsp"%>
 <!-- footer end -->	

@@ -13,29 +13,27 @@
 		<div id="container" class="container">
 			<h1 id="title">회원 가입</h1>
 			<div class="form-group">
-				<label for="username">아이디:</label> <input type="text"
+				<label>아이디:</label > <input type="text"
 					name="username" class="form-control" placeholder="아이디를 입력하세요"
 					required="required" maxlength="20" id="username">
 					<div>
-					<button type="button" class="btn btn-dark float-right" id="btncheckId">아이디 중복 확인</button>
-					<br>
+					<button type="button" class="btn btn-dark float-right" id="btncheckId">아이디 중복 확인</button> <br>
 					</div>
 			</div>
 			<div class="form-group">
-				<label for=password>비밀번호:</label> <input type="password"
+				<label >비밀번호:</label > <input type="password"
 					name="password" class="form-control" placeholder="비밀번호를 입력하세요"
 					required="required">
 			</div>
 			<div class="form-group">
-				<label for="email">이메일:</label> <input type="email"
+				<p>이메일:</p> <input type="email"
 					class="form-control" name="email" placeholder="이메일을 입력하세요"
 					required="required" maxlength="50" id="email">
 					<div>
-					<button type="button" class="btn btn-dark float-right" id="btncheckEmail">이메일 중복 확인</button>
-					<br>
+					<button type="button" class="btn btn-dark float-right" id="btncheckEmail">이메일 중복 확인</button> <br>
 					</div>
 			</div>
-			<label for="gender">성별:</label>
+			<p>성별:</p>
 			<div class="form-check">
 				<label class="form-check-label"> <input type="radio"
 					class="form-check-input" name="gender" value="male">남성
@@ -117,9 +115,9 @@
 					</label>
 				</div><br>
 			</div><br>
-			<button id="btn" type="submit" onclick="register(event);" class="btn btn-dark btn-block">회원가입</button>
+			<button id="btn" type="submit" onclick="register(event);" class="btn btn-dark btn-block">회원가입</button> <br> <br>
 			<button id="btn" type="button" class="btn btn-dark btn-block"
-				onclick="location.href='/'">뒤로가기</button>
+				onclick="location.href='/'">뒤로가기</button> <br>
 		</div>
 	</form><br><br>
 <!-- footer start-->

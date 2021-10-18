@@ -1,22 +1,25 @@
 package com.cos.travel.web;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cos.travel.config.auth.PrincipalDetails;
 import com.cos.travel.model.Spot;
 import com.cos.travel.model.Tagspot;
+import com.cos.travel.service.CommentService;
 import com.cos.travel.service.SpotService;
 import com.cos.travel.service.TagspotService;
-import com.cos.travel.web.dto.search.SearchDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -26,6 +29,7 @@ public class SpotController {
 	
 	private final SpotService spotService;
 	private final TagspotService tagspotService;
+	private final CommentService commentService;
 	
 	// 인기 관광지로 이동하기
 	@GetMapping("/busan/popular")
@@ -42,6 +46,10 @@ public class SpotController {
 		Tagspot tagspot = tagspotService.detail(id);
 		model.addAttribute("spot", spot);
 		model.addAttribute("tagspot", tagspot);
+		// 댓글 리스트
+		model.addAttribute("clist", commentService.list(id));
+		// 댓글 개수
+		model.addAttribute("listCount", commentService.countComment(id));
 		return "busan/popularDetail";
 	}
 	
@@ -58,11 +66,36 @@ public class SpotController {
 	
 	// 관광지 검색하기.
 	@GetMapping("/busan/search")
-	public String searchSight(Model model, @ModelAttribute SearchDto dto, 
-			@PageableDefault(size = 5, sort = "score", direction = Sort.Direction.DESC) Pageable pageable){
-		Page<Spot> spots = spotService.searchByText(dto, pageable);
+	public String searchSight(Model model, 
+			@RequestParam(required=false) String sight, 
+			@RequestParam(required=false) String detail, 
+			@RequestParam(required=false) String tag,
+			@RequestParam(required=false) int page) throws Exception{
+		Map<String, Object> map = new HashMap<String, Object>();
+		// 여기서 관광지명, 제목+내용, 해시태그 조건 분기
+		if(sight!=null) {
+			map.put("sight", sight);
+			model.addAttribute("menu", "sight");
+			model.addAttribute("searchText", sight);
+		}
+		if(detail!=null) {
+			map.put("detail", detail);
+			model.addAttribute("menu", "detail");
+			model.addAttribute("searchText", detail);
+		}
+		if(tag!=null) {
+			map.put("tag", tag);
+			model.addAttribute("menu", "tag");
+			model.addAttribute("searchText", tag);
+		}
+		
+		map.put("pageIndex", page); // 첫 인덱스
+		map.put("recordCountPerPage", 5);
+		map.put("sortColumn", "score");
+		map.put("sortOrder", "desc");
+		Page<Spot> spots = spotService.getGridList(map);
+		System.out.println("관광지 출력 확인 : "+spots);
 		model.addAttribute("spots", spots);
-		model.addAttribute("searchDto", dto);
 		return "busan/searchList";
 	}
 	

@@ -33,9 +33,9 @@ public class BoardController {
 	}
 	
 	// 공지사항 쓰기 이동
-	@GetMapping("/board/noticeForm")
-	public String noticeForm() {
-		return "board/noticeForm";
+	@GetMapping("/board/boardWrite")
+	public String boardWrite() {
+		return "board/boardWrite";
 	}
 	
 	// 공지사항 상세보기
@@ -59,15 +59,15 @@ public class BoardController {
 		
 		boardService.update(id, board);
 		model.addAttribute("board", board);
-		return "board/noticedetail";
+		return "board/boardDetail";
 	}
 	
-	// 모든 검색 컨트롤러
-	@GetMapping("/board/findbytext")
-	public String findByText(Model model, @ModelAttribute SearchDto dto, 
-			@PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
-		Page<Board> lists = boardService.searchByText(dto, pageable);
-		model.addAttribute("boards", lists);
-		return "board/boardMain";
-	}
+//	// 모든 검색 컨트롤러
+//	@GetMapping("/board/findbytext")
+//	public String findByText(Model model, @ModelAttribute SearchDto dto, 
+//			@PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+//		Page<Board> lists = boardService.searchByText(dto, pageable);
+//		model.addAttribute("boards", lists);
+//		return "board/boardMain";
+//	}
 }

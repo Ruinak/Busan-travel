@@ -43,14 +43,11 @@ public class UserController {
 			Map<String, String> errorMap = new HashMap<>();
 			for (FieldError error : bindingResult.getFieldErrors()) {
 				errorMap.put(error.getField(), error.getDefaultMessage());
-				System.out.println("====================");
-				System.out.println(error.getDefaultMessage());
 			}
 			throw new CustomValidationException("실패!", errorMap);			
 		} else {			
 			User user = dto.toEntity();
 			User userEntity = userService.join(user);
-			System.out.println(userEntity);
 			return "redirect:/login";
 		}
 	}

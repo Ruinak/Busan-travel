@@ -61,11 +61,16 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td id="replyResultWriter"></td>
-					<td id="replyResultContent"></td>
-					<td id="replyResultRegdate"></td>
-				</tr>
+				<c:forEach var="list" items="${clist}">
+					<tr>
+						<td>${list.writer }</td>
+						<td>${list.content }</td>
+						<td id="date"><fmt:formatDate value="${ list.regdate }" pattern="yyyy-MM-dd a hh:mm" />						
+						<c:if test="${list.user.id == principal.user.id}">
+							<button class="btn btn-danger btn-sm badge" style="font-size: 13px">삭제</button>
+						</c:if></td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table><hr>	
 		<c:if test="${ not empty principal.user }"><br/>
@@ -146,7 +151,7 @@
 			alert("댓글 추가 실패")
 		})
 	})
-	// 댓글 리스트
+/* 	// 댓글 리스트
 	var init = function() {
 		$.ajax({
 			type : "GET",
@@ -168,7 +173,7 @@
 			alert("댓글 불러오기 실패");
 		})
 	}
-	init();
+	init(); */
 </script>
 </body>
 </html>

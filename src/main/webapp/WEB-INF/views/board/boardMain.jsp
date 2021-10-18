@@ -12,66 +12,33 @@
 </head>
 <body>
 <div class="container">
-	<h1>공지 사항</h1> <br>
-	<div style="margin: 1rem" class="float-right">
-		<form class="form-inline" action="" id="saerchForm">
-			<div class="form-group">
-				<label for="sel1"></label> <select class="form-control" id="sel1">
-					<option>검색</option>
-					<option>제목+내용</option>
-					<option>작성일</option>
-				</select>
-			</div>
-			<input class="form-control mr-sm-2" type="text" placeholder="Search"
-				id="search" name="">
-			<button class="btn btn-success" type="submit"
-				onclick="onSearch(event)">검색</button>
-		</form>
-	</div>
+	<h1>Questions n Answers</h1> <hr id="hr"> <br> <br>
 	<table class="table table-hover" style="text-align: center">
 		<thead class="thead-light " style="font-wiehgt: bold;">
 			<tr>
-				<th>#</th>
+				<th>번호</th>
 				<th>제목</th>
 				<th>작성자</th>
 				<th>작성일</th>
 				<th>조회수</th>
 			</tr>
 		</thead>
-		<c:choose>
-			<c:when test="${principal.user.role == 'ROLE_ADMIN'}">
-				<div>
-					<button class="btn btn-dark btn-sm btn-block"
-						onclick="location='/board/noticeForm'">공지 쓰기</button>
-				</div>
-				<br>
-				<tbody>
-					<c:forEach var="board" items="${boards.content}">
-						<tr>
-							<td>${board.id}</td>
-							<td><a href="/board/${board.id}" style="text-decoration: none">${board.title}</a></td>
-							<td>${board.user.username}</td>
-							<td><javatime:format value="${board.createDate}" pattern="yyyy.MM.dd" /></td>
-							<td>${board.count}</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</c:when>
-			<c:otherwise>
-				<tbody>
-					<c:forEach var="board" items="${boards.content}">
-						<tr>
-							<td>${board.id}</td>
-							<td><a href="/board/${board.id}" style="text-decoration: none">${board.title}</a></td>
-							<td>${board.user.username}</td>
-							<td><javatime:format value="${board.createDate}" pattern="yyyy.MM.dd" /></td>
-							<td>${board.count}</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</c:otherwise>
-		</c:choose>
+		<tbody>
+			<c:forEach var="board" items="${boards.content}">
+				<tr>
+					<td>${board.id}</td>
+					<td><a href="/board/${board.id}" style="text-decoration: none">${board.title}</a></td>
+					<td>${board.user.username}</td>
+					<td><javatime:format value="${board.createDate}" pattern="yyyy.MM.dd" /></td>
+					<td>${board.count}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
 	</table>
+	<div>
+		<button id="btn" class="btn btn-dark"
+			onclick="location='/board/boardWrite'">QnA 쓰기</button>
+	</div> <br> <br> <br>
 	<ul class="pagination justify-content-center">
 		<c:choose>
 			<c:when test="${boards.first}">
@@ -106,7 +73,7 @@
 			</c:otherwise>
 		</c:choose>
 	</ul>
-</div>
+</div> <br>
 <!-- footer start-->
 <%@ include file="../layout/footer.jsp"%>
 <!-- footer end -->

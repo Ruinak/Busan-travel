@@ -1,14 +1,21 @@
 #footer { 
-	background-color: gray;
+	background-color: black;
 	color: black;
+}
+#footerText{
+	display: flex;
+}
+#section{
+	margin:auto;
+	padding:auto;
+	color: white;
 }
 #footerText1 {
 	text-align: center;
-	color: white;
 	font-size: 32px;
 }
 #footerText2 {
 	text-align: center;
-	color: black;
 	font-size: 20px;
+	line-height: 1.5;
 }
